@@ -1,0 +1,90 @@
+<div class="row">
+
+  <div class="col-4 md:col-4">
+    <label for="partyName">Party Name *</label>
+    <input id="partyName" type="text" [(ngModel)]="partyName" pInputText placeholder="PartyName" />
+  </div>
+
+
+  <div class="col-4 md:col-4">
+    <label for="gstin">GSTIN</label>
+    <input id="gstin" type="text" pInputText placeholder="gstin" />
+  </div>
+
+
+  <div class="col-4 md:col-4">
+    <label for="phone">Phone Number</label>
+    <input id="phone" type="text" pInputText placeholder="phone" />
+  </div>
+</div>
+
+
+<p-tabView>
+  <p-tabPanel header="GST & Address">
+    <form [formGroup]="partyForm" class="grid">
+      <div class="p-fluid flex flex-wrap gap-0 ">
+
+        <div class="col-12 md:col-4">
+          <label for="gstType">GST Type</label>
+          <p-dropdown [options]="gstTypes" formControlName="gstType" placeholder="Select GST Type"></p-dropdown>
+        </div>
+
+
+        <div class="col-12 md:col-4">
+          <label for="state">State</label>
+          <p-dropdown [options]="states" formControlName="state" placeholder="Select State"></p-dropdown>
+        </div>
+
+
+        <div class="col-12 md:col-4">
+          <label for="email">Email ID</label>
+          <input id="email" type="email" pInputText formControlName="email" />
+        </div>
+
+
+        <div class="col-12">
+          <label for="billingAddress">Billing Address</label>
+          <textarea id="billingAddress" pInputTextarea formControlName="billingAddress"></textarea>
+        </div>
+
+        <div class="col-12" *ngIf="showShipping">
+          <label for="shippingAddress">Shipping Address</label>
+          <textarea id="shippingAddress" pInputTextarea formControlName="shippingAddress"></textarea>
+        </div>
+      </div>
+    </form>
+  </p-tabPanel>
+
+  <p-tabPanel header="Credit & Balance">
+
+    <div class=" flex flex-wrap gap-0 p-fluid">    
+      <!-- Opening Balance Input -->
+      <div class="p-field p-col-12 p-md-6 small-label"> 
+
+        <span class="p-float-label">
+          <input id="openingBalance" type="text" pInputText [(ngModel)]="openingBalance"
+            placeholder="Opening Balance" />
+          <label for="openingBalance">Opening Balance</label>
+        </span>
+      </div>
+
+      <!-- As Of Date Input -->
+      <div class="p-field p-col-12 p-md-6 small-label">
+        <span class="p-float-label">
+          <p-calendar id="asOfDate" [(ngModel)]="asOfDate" dateFormat="dd/mm/yy"></p-calendar>
+          <label for="asOfDate">As Of Date</label>
+        </span>
+      </div>
+    </div>
+
+
+
+  </p-tabPanel>
+
+</p-tabView>
+
+<div class="flex justify-content-end mt-4">
+  <!-- <button pButton type="button" label="Save & New" class="p-button-outlined mr-2 three-tab"
+    (click)="save(true)"></button> -->
+  <button pButton type="button" label="Save" class="three-tab" (click)="navigateWithData()"></button>
+</div>

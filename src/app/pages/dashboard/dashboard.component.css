@@ -1,0 +1,150 @@
+.dashboard-container {
+  padding: 2%;
+}
+
+.month {
+  margin-left: auto;
+}
+.main-btn{
+  margin-left: 5%;
+}
+.btn{
+box-shadow: 10px 5px 15px 10px rgba(0, 0, 0, 0.1) ;
+margin: 0% 8% 0% 0% ;
+}
+
+.summary {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.card {
+  width: 48%;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 10px 4px 15px rgba(0, 0, 0, 0.1);
+  background-color: white !important;
+  position: relative;
+}
+
+.receivable {
+  background: hwb(0 98% 0%);
+  color: #020202;
+}
+
+.payable {
+  background: #fff9f9;
+  color: #000000;
+}
+
+
+
+.pi-arrow-down,
+.pi-arrow-up {
+  border-radius: 50%;
+  width: 55px;
+  height: 54px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+}
+
+.pi-arrow-down {
+  background-color: hsl(254, 65%, 91%);
+  color: rgb(0, 26, 255);
+}
+
+.pi-arrow-up {
+  background-color: rgb(252, 199, 199);
+  color: red;
+}
+
+.sales {
+  margin-top: 20px;
+}
+
+.reports {
+  margin-top: 20px;
+}
+
+
+@media (max-width: 767px) {
+  .summary {
+    flex-direction: column;
+  }
+
+  .report-list {
+  flex-direction: column;
+  width: 50%;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .report-list {
+  
+    display: flex !important;
+    justify-content: space-around !important;
+  }
+
+  .pi-arrow-down,
+  .pi-arrow-up {
+    right: 10px;
+    bottom: 10px;
+    width: 45px;
+    height: 45px;
+  }
+
+  .month {
+    margin-left: 0;
+    margin-bottom: 10px;
+    display: block;
+    text-align: right;
+        
+  }
+}
+@media (max-width: 576px) {
+  .btn {
+    margin: 11px 0px;
+  }
+}
+
+
+@media (min-width: 768px) and (max-width: 1200px) {
+  .summary {
+    flex-wrap: wrap;
+  }
+
+  .card {
+    width: 48%;
+  }
+
+  .report-list {
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .report-list button {
+    flex: 1  48%;
+  }
+}
+
+  
+  
+  
+  
+
+
+
+
+
+
+
+

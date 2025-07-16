@@ -1,0 +1,64 @@
+<div class="main-content flex-column flex-shrink-0 p-3 text-white" [ngStyle]="{
+    width: isCollapsed ? '78px' : '250px',
+    height: '100vh',
+    position: 'fixed',
+    'background-color': 'rgb(39, 34, 53)'
+  }">
+  <!-- Sidebar Header -->
+  <a href="javascript:void(0)" class="d-flex align-items-center mb-3 text-white text-decoration-none">
+
+    <span *ngIf="!isCollapsed" class="fs-5 ms-3">Vyapar App</span>
+    <!-- <i class="bi fs-3 ms-2" [ngClass]="isCollapsed ? 'bi-arrow-right-circle-fill' : 'bi-arrow-left-circle-fill'"
+      (click)="toggleSidebar()"></i> -->
+  </a>
+
+
+  <hr *ngIf="!isCollapsed" />
+
+  <!-- Menu -->
+  <ul class="nav nav-pills flex-column mb-auto">
+    <li *ngFor="let item of menu" class="nav-item">
+      <!-- Simple Route -->
+      <a *ngIf="!item.children && !item.action" class="nav-link icon text-white d-flex align-items-center"
+        (click)="hideReports(item)">
+        <i class="{{ item.icon }}" style="font-size: 25px;"></i>
+        <span *ngIf="!isCollapsed" class="ms-2">{{ item.label }}</span>
+      </a>
+
+      <!-- Action Item -->
+      <a *ngIf="item.action" class="nav-link text-white d-flex align-items-center" href="javascript:void(0)"
+        (click)="handleAction(item)">
+        <i class="{{ item.icon }}" style="font-size: 20px;"></i>
+        <span *ngIf="!isCollapsed" class="ms-2 ">{{ item.label }}</span>
+      </a>
+
+      <!-- Dropdown Menu -->
+      <div *ngIf="item.children">
+        <a href="javascript:void(0)" class="nav-link text-white d-flex align-items-center justify-content-between"
+          (click)="!isCollapsed && toggleSubmenu(item)">
+          <span class="d-flex align-items-center">
+            <i class="{{ item.icon }}" style="font-size: 20px;"></i>
+            <span *ngIf="!isCollapsed" class="ms-2">{{ item.label }}</span>
+          </span>
+          <i *ngIf="!isCollapsed" class="bi" [ngClass]="item.expanded ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+        </a>
+
+        <ul class="nav flex-column ms-3" *ngIf="item.expanded && !isCollapsed">
+          <li *ngFor="let child of item.children" class="nav-item">
+            <a class="nav-link text-white" (click)="hideReports(child)">
+                {{ child.label }}
+            </a>
+          </li>
+        </ul>
+
+
+      </div>
+    </li>
+  </ul>
+
+
+  <p-drawer header="Settings" [(visible)]="visible" position="full">
+    <app-setting></app-setting>
+  </p-drawer>
+
+</div>

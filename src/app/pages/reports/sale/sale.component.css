@@ -1,0 +1,9 @@
+.main-content {
+    /* margin-left: 150px;  */
+    padding: 0px;
+  }
+  .card{
+    margin-right: 10%;
+    width: 20%;
+    height: 10% !important;
+  }

@@ -1,0 +1,208 @@
+<div class="card">
+  <p-tabView class="tabview">
+
+    <!-- Div 1  -->
+    <!-- Div 1  -->
+    <!-- Div 1  -->
+    <!-- Div 1  -->
+
+    <p-tabPanel header="PRODUCTS">
+      <div class="row">
+        <div class="col-3 add-party">
+          <div class="responsive-container">
+            <i class="pi pi-search icon"></i>
+            <button routerLink="/add-party" class="add-party-btn">Add Item</button>
+            <i class="pi pi-ellipsis-v icon" (click)="showDialog()" tooltipPosition="right"></i>
+            
+          </div>
+
+          <p-dialog [closable]="false" class="dialog" [(visible)]="visible" [style]="{ width: '13rem' }">
+            <div class="row row-dial">
+              <span (click)="visible = false">Bulk Inactive</span>
+              <span (click)="visible = false">Bulk Active</span>
+              <span (click)="visible = false">Bulk Assings Code </span>
+              <span (click)="visible = false">Assings Unit </span>
+            </div>
+          </p-dialog>
+
+          <div class="main">
+            <div class="PARTY">
+              ITEM <br> <br>
+
+              Mouse <br> <br>
+
+              keyboard
+            </div>
+            <div class="AMOUNT">
+              QUANTITY <br> <br>
+
+              8 <br> <br>
+
+              5
+            </div>
+          </div>
+        </div>
+        <div class="col-9">
+          <div class="row ADMIN-ROW">
+            <div class="col-8">
+              
+              <label>SALE PRICE:₹ 0.00 (excl) </label> <br>
+              <label>PURCHASE PRICE: ₹ 0.00 (excl) </label> <br>
+
+            </div>
+            <div class="col-4">
+              <label>STOCK QUANTITY : -9</label> <br>
+              <label>STOCK VALUE : ₹ 0.00 </label> <br>
+            </div>
+          </div>
+          <div class="row TRANSACATIONS-ROW">
+            <div class="row">
+              TRANSACATIONS <input class="inputone" type="text" placeholder="Search" />
+            </div>
+
+            <div class="card">
+              <p-table [value]="products" [tableStyle]="{ 'min-width': '40rem' }">
+                <ng-template>
+                  <tr>
+                    <th>Type</th>
+                    <th>Number</th>
+                    <th>Date</th>
+                    <th>Total</th>
+                    <th>Balance</th>
+                  </tr>
+                </ng-template>
+                <ng-template #body let-product>
+                  <tr>
+                    <td>{{ product.type }}</td>
+                    <td>{{ product.number }}</td>
+                    <td>{{ product.date }}</td>
+                    <td>{{ product.total }}</td>
+                    <td>{{ product.balance }}</td>
+                  </tr>
+                </ng-template>
+              </p-table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </p-tabPanel>
+
+    <!-- Div 2 -->
+    <!-- Div 2 -->
+    <!-- Div 2 -->
+    <!-- Div 2 -->
+
+    <p-tabPanel header="SERVICES">
+     <div class="empty-state-container">
+  <div class="empty-state-content">
+    <img src="../../../assets/items.png" alt="Service Icons" class="service-image" />
+    <p class="message">Add services you provide to your customers and create Sale invoices for them faster.</p>
+    <button class="add-button">Add Your First Service</button>
+  </div>
+</div>
+
+    </p-tabPanel>
+
+    <!-- Div 3 -->
+    <!-- Div 3 -->
+    <!-- Div 3 -->
+    <!-- Div 3 -->
+
+    <p-tabPanel header="CATEGORY">
+      <div class="container">
+        <div class="sidebar">
+          <div class="search-bar">
+            <i class="pi pi-search"></i>
+            <button class="add-btn">+ Add Category</button>
+          </div>
+          
+
+          <ul class="category-list">
+            <li class="category active">
+              <span>Items not in any Category</span>
+              <span class="item-count">10</span>
+            </li>
+            <li class="category">
+              <span>5</span>
+              <span class="item-count">1</span>
+            </li>
+          </ul>
+        </div>
+        <div class="content">
+          <div class="header">
+            <span class="title">ITEMS NOT IN ANY CATEGORY</span>
+            <!-- <button class="move-btn">Move To This Category</button> -->
+          </div>
+
+          <div class="table-container">
+            <div class="table-header">
+              <span>NAME</span>
+              <span>QUANTITY</span>
+              <span>STOCK VALUE</span>
+            </div>
+
+            <div class="table-row" *ngFor="let item of items">
+              <span>{{ item.name }}</span>
+              <span [class.negative]="item.quantity < 0">{{ item.quantity }}</span>
+              <span>₹ {{ item.value.toFixed(5) }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </p-tabPanel>
+
+
+     <!-- Div 4  -->
+       <!-- Div 4  -->
+         <!-- Div 4  -->
+           <!-- Div 4  -->
+
+            
+    <p-tabPanel header="UNITS">
+      <div class="container-fluid units-page">
+  <div class="row">
+    <div class="col-lg-4 col-md-5 mb-3">
+      <div class="card h-100">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h5 class="mb-0">Units</h5>
+          <button class="btn btn-warning btn-sm">+ Add Units</button>
+        </div>
+        <div class="card-body p-2">
+          <input type="text" class="form-control mb-2" placeholder="Search units..." [(ngModel)]="searchText">
+          <ul class="list-group unit-list">
+            <li *ngFor="let unit of filteredUnits()" 
+                [class.active]="unit.fullname === selectedUnit.fullname"
+                class="list-group-item d-flex justify-content-between align-items-center"
+                (click)="selectUnit(unit)">
+              <span>{{ unit.fullname }}</span>
+              <small class="text-muted">{{ unit.shortname }}</small>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-8 col-md-7">
+      <div class="card h-100">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h5 class="mb-0">{{ selectedUnit.fullname || 'Select a unit' }}</h5>
+          <button class="btn btn-primary btn-sm">Add Conversion</button>
+        </div>
+        <div class="card-body">
+          <div *ngIf="selectedUnit.conversion">
+            <p><strong>Conversion:</strong> {{ selectedUnit.conversion }}</p>
+          </div>
+          <div *ngIf="!selectedUnit.conversion">
+            <p class="text-muted">No conversion defined for this unit.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </p-tabPanel>
+  </p-tabView>
+</div>
