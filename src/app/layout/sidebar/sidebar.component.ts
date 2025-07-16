@@ -2,12 +2,13 @@ import { Component, Output, EventEmitter } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { DrawerModule } from 'primeng/drawer';
+import { PanelMenuModule } from 'primeng/panelmenu';
 import { SettingComponent } from '../../pages/settings/settings.component'
 
 @Component({
   standalone: true,
   selector: 'app-sidebar',
-  imports: [CommonModule, RouterModule, DrawerModule, SettingComponent],
+  imports: [CommonModule, RouterModule, DrawerModule, SettingComponent,PanelMenuModule,],
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
@@ -91,6 +92,12 @@ export class SidebarComponent {
         { label: 'Cash In Hand', route: '/cash-in-hand' }
       ]
     },
+
+    {
+      label: 'Sync Share',
+      icon: 'pi pi-sync',
+      route: '/share'
+    },
     {
       label: 'Reports',
       icon: 'pi pi-chart-bar',
@@ -110,17 +117,12 @@ export class SidebarComponent {
       ]
     },
 
-    {
+     {
       label: 'Settings',
       icon: 'pi pi-cog',
-      command: () => this.openDrawer()
+      command: () => this.openDrawer() 
     },
-
-    {
-      label: 'Sync Share',
-      icon: 'pi pi-sync',
-      route: '/share'
-    },
+    
     { label: 'Plans & Pricing', icon: 'pi pi-star', route: '/plan' },
     { label: 'Profile', icon: 'pi pi-user', route: '/profile' }
   ];

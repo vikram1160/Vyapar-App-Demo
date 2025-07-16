@@ -247,7 +247,7 @@
           <ng-template let-image #item>
             <div class="p-2 text-center">
               <img [src]="image" alt="Image" class="w-full rounded-border cursor-pointer" (click)="showImage(image)"
-                style="max-height: 250px; object-fit: contain;"/>
+                style="max-height: 250px; object-fit: contain;" />
             </div>
           </ng-template>
         </p-carousel>
@@ -315,25 +315,15 @@
 
 
       <div class="invoice-preview p-7 flex-grow-1">
-  <!-- Show selected image if it exists -->
-  <img 
-    *ngIf="selectedImage; else defaultImage" 
-    [src]="selectedImage" 
-    alt="Selected"
-    class="full-image" />
+        <!-- Show selected image if it exists -->
+        <img *ngIf="selectedImage; else defaultImage" [src]="selectedImage" alt="Selected" class="full-image" />
 
-  <!-- Else show default image -->
-  <ng-template #defaultImage>
-    <img 
-      src="assets/Sales_Invoice_Example.png" 
-      alt="Default" 
-      class="full-image" />
-  </ng-template>
-</div>
-
-     
+        <!-- Else show default image -->
+        <ng-template #defaultImage>
+          <img src="assets/Sales_Invoice_Example.png" alt="Default" class="full-image" />
+        </ng-template>
+      </div>
     </div>
-
   </div>
 </div>
 
@@ -362,6 +352,7 @@
           <span class="ms-2">(days)</span>
         </div>
       </div>
+       
 
       <div class="col-12 col-lg-4">
         <h5 class="section-title">Additional fields <i class="bi bi-info-circle"></i></h5>

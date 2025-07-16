@@ -31,7 +31,7 @@ export class SaleInviocesComponent implements OnInit {
   products = [
     {
       id: 1,
-      date: new Date("2025-04-20"),
+      date: new Date("Sun Apr 20 2025 05:30:00 GMT+0530"),
       invoice_no: "1",
       party_name: "Mobail",
       transactoins_type: "1",
@@ -41,7 +41,7 @@ export class SaleInviocesComponent implements OnInit {
     },
     {
       id: 2,
-      date: new Date("2025-04-23"),
+      date: new Date("Sun Apr 20 2025 05:30:00 GMT+0530"),
       invoice_no: "3",
       party_name: "Laptop",
       transactoins_type: "2 ",
@@ -91,8 +91,8 @@ export class SaleInviocesComponent implements OnInit {
       console.log('payment_type:', payment_type);
       console.log('amount:', amount);
       console.log('balance_due:', balance_due);
-      
-      
+
+
       // Only push if required params are present
       if (invoice_no && invoice_date) {
         let newProduct = {
@@ -106,9 +106,9 @@ export class SaleInviocesComponent implements OnInit {
           balance_due: String(balance_due || '')
         };
 
-      
+
         this.products.push(newProduct);
-      } 
+      }
     });
   }
 }
