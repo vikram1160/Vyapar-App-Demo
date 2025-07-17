@@ -78,6 +78,7 @@ export class AddSaleComponent {
       payment_type: pricePerUnit.toFixed(2),
       amount: amount.toFixed(2),
       balance_due: balanceDue.toFixed(2),
+    discount: discount,
 
     };
 

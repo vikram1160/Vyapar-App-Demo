@@ -4,6 +4,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { CalendarModule } from 'primeng/calendar';
 import { TableModule } from 'primeng/table';
 import { ActivatedRoute } from '@angular/router';
+import { DatePipe, CommonModule } from '@angular/common';
 
 interface City {
   name: string;
@@ -13,7 +14,7 @@ interface City {
 @Component({
   selector: 'app-sale-invioces',
   standalone: true,
-  imports: [DropdownModule, FormsModule, CalendarModule, TableModule],
+  imports: [DropdownModule, FormsModule, CalendarModule, TableModule, DatePipe, CommonModule],
   templateUrl: './sale-invioces.component.html',
   styleUrl: './sale-invioces.component.css'
 })
@@ -36,19 +37,22 @@ export class SaleInviocesComponent implements OnInit {
       party_name: "Mobail",
       transactoins_type: "1",
       payment_type: "8999",
-      amount: "599",
+     discount: 599,
       balance_due: "8400",
+       
     },
     {
       id: 2,
       date: new Date("Sun Apr 20 2025 05:30:00 GMT+0530"),
-      invoice_no: "3",
+      invoice_no: "23",
       party_name: "Laptop",
       transactoins_type: "2 ",
       payment_type: "12999",
-      amount: "999",
+       discount: 999,
       balance_due: "24000",
+     
     }
+       
   ];
 
   cities: City[] = [];
@@ -82,18 +86,7 @@ export class SaleInviocesComponent implements OnInit {
       const payment_type = params['payment_type'];
       const amount = params['amount'];
       const balance_due = params['balance_due'];
-
-      console.log('ID:', id);
-      console.log('Invoice Number:', invoice_no);
-      console.log('Date:', invoice_date);
-      console.log('Party Name:', party_name);
-      console.log('transactions_type:', transactions_type);
-      console.log('payment_type:', payment_type);
-      console.log('amount:', amount);
-      console.log('balance_due:', balance_due);
-
-
-      // Only push if required params are present
+      const discount = params['discount'];
       if (invoice_no && invoice_date) {
         let newProduct = {
           id,
@@ -103,10 +96,9 @@ export class SaleInviocesComponent implements OnInit {
           transactoins_type: String(transactions_type || ''),
           payment_type: String(payment_type || ''),
           amount: String(amount || ''),
-          balance_due: String(balance_due || '')
+          balance_due: String(balance_due || ''),
+          discount: Number(discount|| '')
         };
-
-
         this.products.push(newProduct);
       }
     });

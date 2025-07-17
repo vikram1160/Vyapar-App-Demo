@@ -12,6 +12,13 @@ a{
   display: none;
 }
 
+@media (max-width: 600px) {
+  .toggle-button {
+    display: block; /* Show toggle button in mobile */
+  }
+}
+
+
 @media (max-width: 78px) {
   .rightbtn {
     display: block !important;

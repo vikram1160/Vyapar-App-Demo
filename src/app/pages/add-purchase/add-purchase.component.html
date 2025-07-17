@@ -1,37 +1,32 @@
-<div class="sale-container">
-  <h2>Purchase</h2>
-  <br>
-  <br>
+<div class="sale-container container py-3">
+  <h2 class="mb-4 text-center">Purchase</h2>
 
-  <div class="row">
-    <div class="col-6">
-      <!-- <div class="toggle-group">
-        <label>Credit</label>
-        <input type="radio" [(ngModel)]="isCash" />
-        <label>Cash</label>
-      </div> -->
-
+  <!-- Customer & Invoice Info -->
+  <div class="row g-3 mb-4">
+    <!-- Customer Info -->
+    <div class="col-12 col-md-6">
       <div class="customer-details">
-        <input type="text" placeholder="Customer Name " [(ngModel)]="customerName" />
-        <input type="text" placeholder="Phone No." [(ngModel)]="phoneNumber" />
+        <input type="text" class="form-control mb-2" placeholder="Customer Name" [(ngModel)]="customerName" />
+        <input type="text" class="form-control" placeholder="Phone No." [(ngModel)]="phoneNumber" />
       </div>
     </div>
 
-
-    <div class="col-6">
+    <!-- Invoice Info -->
+    <div class="col-12 col-md-6">
       <div class="invoice-info">
-        <label>Invoice Number</label>
-        <input type="number" [(ngModel)]="invoiceNumber" />
+        <label class="form-label">Invoice Number</label>
+        <input type="number" class="form-control mb-2" [(ngModel)]="invoiceNumber" />
 
-        <label>Invoice Date</label>
-        <input type="date" [(ngModel)]="invoiceDate" />
+        <label class="form-label">Invoice Date</label>
+        <input type="date" class="form-control" [(ngModel)]="invoiceDate" />
       </div>
-
     </div>
   </div>
-  <div class="table-responsive table-bordered">
-    <table class="table">
-      <thead>
+
+  <!-- Items Table -->
+  <div class="table-responsive mb-4">
+    <table class="table table-bordered">
+      <thead class="table-light">
         <tr>
           <th>Sr</th>
           <th>Item</th>
@@ -43,17 +38,37 @@
       </thead>
       <tbody>
         <tr>
-          <td>{{ i + 1 }}</td>
+          <td>1</td>
           <td><input type="text" [(ngModel)]="name" class="form-control" /></td>
           <td><input type="number" [(ngModel)]="qty" class="form-control" /></td>
           <td><input type="number" [(ngModel)]="price" class="form-control" /></td>
           <td><input type="number" [(ngModel)]="discount" class="form-control" /></td>
-          <td><input type="number"  [(ngModel)]="amount" class="form-control" disabled=""></td>
-            
+          <td><input type="number" [(ngModel)]="amount" class="form-control" disabled /></td>
         </tr>
       </tbody>
     </table>
   </div>
+
+  <!-- Total Section -->
+  <div class="row total-section mb-4 align-items-center">
+    <!-- Uncomment this block if using round off -->
+    <!--
+    <div class="col-12 col-md-6 mb-2">
+      <label class="me-2">Round Off</label>
+      <input type="number" [(ngModel)]="roundOff" class="form-control d-inline w-50" />
+    </div>
+    <div class="col-12 col-md-6 mb-2">
+      <label class="me-2">Total</label>
+      <input type="number" [value]="calculateTotal()" class="form-control d-inline w-50" disabled />
+    </div>
+    -->
+  </div>
+
+  <!-- Save Button -->
+  <div class="text-end">
+    <button class="btn btn-success" (click)="saveInvoice()">Save</button>
+  </div>
+</div>
 
 
 
@@ -84,15 +99,15 @@
 
   <!-- <button class="btn btn-primary mt-2" (click)="addRow()"> Add Row </button> -->
 
-  <div class="total-section mt-3">
+  <!-- <div class="total-section mt-3"> -->
     <!-- <label>Round Off</label>
     <input type="number" [(ngModel)]="roundOff" class="form-control d-inline w-auto mx-2" /> -->
 
     <!-- <label>Total</label> -->
     <!-- <input type="number" [value]="calculateTotal()" class="form-control d-inline w-auto" disabled /> -->
-  </div>
+  <!-- </div>
 
-  <button class="btn btn-success mt-2" (click)="saveInvoice()">Save</button>
+  <button class="btn btn-success mt-2" (click)="saveInvoice()">Save</button> -->
 
 
 

@@ -1,11 +1,15 @@
-<div class="party-details">
-  <div class="row">
-    <div class="col-3 add-party">
-      <i class="pi pi-search" (click)="onSearchClick()"></i>
-      <input *ngIf="showSearchInput" type="text" placeholder="Search Party" class="search-input" />
-      <button routerLink='/add-party' *ngIf="!showSearchInput" class="add-party-btn">Add Party</button> <i
-        class="pi pi-ellipsis-v" (click)="showDialog()" pTooltip="Manage Parties Active/Inactive"
-        tooltipPosition="right"></i>
+<div class="party-details container-fluid">
+  <div class="row flex-wrap">
+    <!-- Left Panel -->
+    <div class="col-lg-3 col-md-4 col-sm-12 add-party mb-3">
+      <div class="d-flex align-items-center justify-content-between mb-2">
+        <i class="pi pi-search" (click)="onSearchClick()"></i>
+        <input *ngIf="showSearchInput" type="text" placeholder="Search Party" class="form-control search-input ms-2" />
+        <button *ngIf="!showSearchInput" routerLink="/add-party" class="btn btn-sm btn-primary ms-2">Add Party</button>
+        <i class="pi pi-ellipsis-v ms-2" (click)="showDialog()" pTooltip="Manage Parties Active/Inactive" tooltipPosition="right"></i>
+      </div>
+
+      <!-- Dialog -->
       <p-dialog header="Manage Parties Active / Inactive" [modal]="true" [(visible)]="visible"
         [style]="{ width:'100%', maxWidth:'39rem' }">
         <div class="mb-3">
@@ -28,7 +32,8 @@
         </div>
       </p-dialog>
 
-      <table cellpadding="10" cellspacing="0">
+      <!-- Party Table -->
+      <table class="table table-sm table-bordered mt-3">
         <thead>
           <tr>
             <th>PARTY</th>
@@ -40,45 +45,50 @@
             <td>Laptop Shop</td>
             <td>28000</td>
           </tr>
-
           <tr>
-            <td>mobail Shop</td>
+            <td>Mobile Shop</td>
             <td>2000</td>
           </tr>
-
-          <tr *ngIf="party  && amount">
+          <tr *ngIf="party && amount">
             <td>{{ party }}</td>
             <td>{{ amount }}</td>
           </tr>
         </tbody>
       </table>
-
     </div>
-    <div class="col-9">
-      <div class="row ADMIN-ROW">
-        <div class="col-8">
-          <br>
-          <label>Phone : <span routerLink='/add-party'> <i class="pi pi-phone"></i> Add Phone No</span> </label> <br>
-          <label>Email : <span routerLink='/add-party'> <i class="pi pi-envelope"></i> Add Email ID</span> </label> <br>
-          <label>No Credit Limit Set : <span routerLink='/add-party'> Set Credit Limit </span> </label>
 
+    <!-- Right Panel -->
+    <div class="col-lg-9 col-md-8 col-sm-12">
+      <!-- Admin Info -->
+      <div class="row admin-row g-3">
+        <div class="col-md-8">
+          <label>Phone: <span routerLink="/add-party"><i class="pi pi-phone"></i> Add Phone No</span></label><br>
+          <label>Email: <span routerLink="/add-party"><i class="pi pi-envelope"></i> Add Email ID</span></label><br>
+          <label>No Credit Limit Set: <span routerLink="/add-party">Set Credit Limit</span></label>
         </div>
-        <div class="col-4">
-          <div class="icon"><i class="pi pi-envelope
-                    " style="font-size: 1.6rem"></i> <i class="pi pi-whatsapp" style="font-size: 1.6rem"></i> <i
-              class="pi pi-clock" style="font-size: 1.6rem"></i></div>
-          <label>Address : <span routerLink='/add-party'> Add Address</span> </label> <br>
-          <label>GstIn : <span routerLink='/add-party'> Add GSTIN</span> </label> <br>
-          <label>Party Status : <span class="switch"> <input type="checkbox" checked>
-              <span class="slider round"></span></span> </label> <br>
+        <div class="col-md-4">
+          <div class="icon mb-2 d-flex gap-2">
+            <i class="pi pi-envelope fs-5"></i>
+            <i class="pi pi-whatsapp fs-5"></i>
+            <i class="pi pi-clock fs-5"></i>
+          </div>
+          <label>Address: <span routerLink="/add-party">Add Address</span></label><br>
+          <label>GstIn: <span routerLink="/add-party">Add GSTIN</span></label><br>
+          <label>Party Status:
+            <span class="switch ms-2">
+              <input type="checkbox" checked />
+              <span class="slider round"></span>
+            </span>
+          </label>
         </div>
       </div>
-      <div class="row TRANSACATIONS-ROW">
-        TRANSACATIONS
 
-        <div class="card">
-          <p-table [value]="products" [tableStyle]="{ 'min-width': '40rem' }" class="table table-hover">
-            <ng-template #header>
+      <!-- Transactions Table -->
+      <div class="row mt-4">
+        <h5>TRANSACTIONS</h5>
+        <div class="card p-2">
+          <p-table [value]="products" [tableStyle]="{ 'min-width': '100%' }" class="table-responsive">
+            <ng-template pTemplate="header">
               <tr>
                 <th>Type</th>
                 <th>Number</th>
@@ -87,7 +97,7 @@
                 <th>Balance</th>
               </tr>
             </ng-template>
-            <ng-template #body let-product>
+            <ng-template pTemplate="body" let-product>
               <tr>
                 <td>{{ product.type }}</td>
                 <td>{{ product.number }}</td>

@@ -16,10 +16,7 @@ import { CommonModule } from '@angular/common';
 export class DashboardComponent {
  data: any;
   options: any;
-  formatted: any
-
-
-
+  formatted: any 
 
   constructor( private router: Router ) {
     const today = new Date();
@@ -95,20 +92,18 @@ export class DashboardComponent {
 
     goReport(){
 
-     this.router.navigate(['/reports/sale']);
-
-      // this.router.navigate(['/reports/sale', 'go-report']);
+     this.router.navigate(['/sale']);
     }
 
     goTransction(){
-      this.router.navigate(['reports/all-transactions']);
+      this.router.navigate(['/all-transactions']);
 
     }
     goBookDayReport(){
-      this.router.navigate(['reports/daybook']); 
+      this.router.navigate(['profit-loss']); 
     }
     goPartyStatement(){
-      this.router.navigate(['reports/party-statement']);
+      this.router.navigate(['/party-statement']);
     }
       
 }

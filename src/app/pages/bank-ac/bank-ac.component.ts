@@ -17,6 +17,7 @@ import { CommonModule } from '@angular/common';
 export class BankAccountComponent {
   visible: boolean = false;
   value: string | undefined;
+  Balance:string| undefined;
 
   date1: Date = new Date(); 
 

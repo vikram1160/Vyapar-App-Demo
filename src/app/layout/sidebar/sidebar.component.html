@@ -7,32 +7,33 @@
   }"
 >
 
-  <!-- Sidebar Header -->
+<!-- <button class="toggle-button" (click)="isSidebarOpen = !isSidebarOpen">
+  ☰
+</button> -->
+
+ 
   <a href="javascript:void(0)" class="d-flex align-items-center mb-3 text-white text-decoration-none">
     <span *ngIf="!isCollapsed" class="fs-5 ms-3">Vyapar App</span>
   </a>
 
   <hr *ngIf="!isCollapsed" />
 
-  <!-- Custom Menu -->
   <ul class="nav nav-pills flex-column mb-auto">
     <li *ngFor="let item of menu" class="nav-item">
 
-      <!-- Regular Menu Link -->
+      
       <a *ngIf="!item.children && !item.command" class="nav-link text-white d-flex align-items-center"
         [routerLink]="item.route">
         <i class="{{ item.icon }}" style="font-size: 20px;"></i>
         <span *ngIf="!isCollapsed" class="ms-2">{{ item.label }}</span>
       </a>
-
-      <!-- Drawer/Command Action -->
       <a *ngIf="item.command" class="nav-link text-white d-flex align-items-center"
         (click)="item.command()">
         <i class="{{ item.icon }}" style="font-size: 20px;"></i>
         <span *ngIf="!isCollapsed" class="ms-2">{{ item.label }}</span>
       </a>
 
-      <!-- Dropdown -->
+ 
       <div *ngIf="item.children">
         <a href="javascript:void(0)" class="nav-link text-white d-flex align-items-center justify-content-between"
           (click)="!isCollapsed && toggleSubmenu(item)">
@@ -42,7 +43,6 @@
           </span>
           <i *ngIf="!isCollapsed" class="bi" [ngClass]="item.expanded ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
         </a>
-
         <ul class="nav flex-column ms-3" *ngIf="item.expanded && !isCollapsed">
           <li *ngFor="let child of item.children" class="nav-item">
             <a class="nav-link text-white" [routerLink]="child.route">
@@ -65,3 +65,6 @@
     <app-setting></app-setting>
   </p-drawer>
 </div>
+
+
+

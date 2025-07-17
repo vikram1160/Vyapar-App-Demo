@@ -8,19 +8,27 @@ import { SettingComponent } from '../../pages/settings/settings.component'
 @Component({
   standalone: true,
   selector: 'app-sidebar',
-  imports: [CommonModule, RouterModule, DrawerModule, SettingComponent,PanelMenuModule,],
+  imports: [CommonModule, RouterModule, DrawerModule,PanelMenuModule,SettingComponent],
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent {
+
+  isSidebarOpen =true;
   isCollapsed = false;
 
   @Output() collapseChanged = new EventEmitter<boolean>();
 
+    sidebarVisible = true;
+
   toggleSidebar() {
-    this.isCollapsed = !this.isCollapsed;
-    this.collapseChanged.emit(this.isCollapsed);
+    this.sidebarVisible = !this.sidebarVisible;
   }
+
+  // toggleSidebar() {
+  //   this.isCollapsed = !this.isCollapsed;
+  //   this.collapseChanged.emit(this.isCollapsed);
+  // }
 
   constructor(private router: Router) { }
 
@@ -122,7 +130,7 @@ export class SidebarComponent {
       icon: 'pi pi-cog',
       command: () => this.openDrawer() 
     },
-    
+
     { label: 'Plans & Pricing', icon: 'pi pi-star', route: '/plan' },
     { label: 'Profile', icon: 'pi pi-user', route: '/profile' }
   ];

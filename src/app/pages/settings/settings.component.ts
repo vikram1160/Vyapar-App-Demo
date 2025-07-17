@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-// Define Product interface locally since it is not exported by @primeng/themes
+
 export interface Product {
   id?: number;
   name: string;
@@ -48,7 +48,6 @@ width: any;
             { id: 3, name: 'Product 3', status: 'OUTOFSTOCK' }
         ] as Product[]);
     }
-
   isGeneralClicked: boolean = true;
   isTransactionClicked: boolean = false;
   isPrintClicked: boolean = false;
@@ -142,7 +141,6 @@ width: any;
         this.getProductsSmall().then((data: Product[]) => {
             this.products = data.slice(0, 9);
         });
-
        this.responsiveOptions = [
             {
                 breakpoint: '1400px',
@@ -186,10 +184,7 @@ width: any;
         }
     }
 
-
   // Div 4 
-
-
 
   onPartyClick() {
     this.isTransactionClicked = false;
@@ -225,7 +220,6 @@ width: any;
     { value: '', showInPrint: false, enabled: false, hasDate: false },
     { value: '', showInPrint: false, enabled: false, hasDate: true, date: '' },
   ];
-
   loyaltyPointEnabled = true;
 
 
