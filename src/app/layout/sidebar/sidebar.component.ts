@@ -9,29 +9,29 @@ import { SidebarService } from './sidebar.service';
 @Component({
   standalone: true,
   selector: 'app-sidebar',
-  imports: [CommonModule, RouterModule, DrawerModule,PanelMenuModule,SettingComponent],
+  imports: [CommonModule, RouterModule, DrawerModule, PanelMenuModule, SettingComponent],
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent {
 
-  isSidebarOpen =true;
+  isSidebarOpen = true;
   isCollapsed: boolean = false;
 
   // constructor( , private sidebarService: SidebarService) { }
 
-    // isCollapsed = false;
+  // isCollapsed = false;
 
-  constructor(public sidebarService: SidebarService,private router: Router) {
+  constructor(public sidebarService: SidebarService, private router: Router) {
     sidebarService.isCollapsed$.subscribe((state) => {
       this.isCollapsed = state;
-      
+
     });
   }
 
-    // constructor(private sidebarService: SidebarService) {}
+  // constructor(private sidebarService: SidebarService) {}
 
-   toggleSidebar() {
+  toggleSidebar() {
     this.sidebarService.toggle();
   }
 
@@ -42,7 +42,7 @@ export class SidebarComponent {
 
   @Output() collapseChanged = new EventEmitter<boolean>();
 
-  
+
 
   toggleSubmenu(item: any) {
     item.expanded = !item.expanded;
@@ -66,7 +66,7 @@ export class SidebarComponent {
   openDrawer() {
     this.visible = true;
   }
-  
+
   // toggleSubmenu(item: any) {
   //   item.expanded = !item.expanded;
   // }
@@ -141,10 +141,11 @@ export class SidebarComponent {
       ]
     },
 
-     {
+
+    {
       label: 'Settings',
       icon: 'pi pi-cog',
-      command: () => this.openDrawer() 
+      command: () => this.openDrawer()
     },
 
     { label: 'Plans & Pricing', icon: 'pi pi-star', route: '/plan' },
