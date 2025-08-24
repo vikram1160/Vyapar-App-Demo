@@ -4,6 +4,9 @@
 a{
   cursor: pointer;
 }
+.toggle-button{
+  margin-left: -9%;
+}
 .fs-3{
      padding-left: 23%; 
       padding-bottom: 0px;
@@ -11,10 +14,14 @@ a{
 .rightbtn {
   display: none;
 }
+.logo{
+  margin-top: -33% !important;
+}
 
-@media (max-width: 600px) {
+@media (max-width: 500px) {
   .toggle-button {
-    display: block; /* Show toggle button in mobile */
+    display: block;
+    /* margin-left: 18% !important;  */
   }
 }
 
@@ -29,3 +36,67 @@ a{
 
   }
 }
+
+.sidebar {
+  position: fixed;
+  height: 100vh;
+  background-color: #272235;
+  color: white;
+  overflow: hidden;
+  transition: width 0.3s ease;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.toggle-btn {
+  font-size: 20px;
+  background: none;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+
+}
+
+.icon-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon-list li {
+  margin: 20px 0;
+  font-size: 20px;
+}
+
+
+/* Base styles */
+.collapsed-sidebar {
+  width: 78px;
+  height: 100vh;
+  position: fixed;
+  background-color: rgb(39, 34, 53);
+  transition: width 0.3s ease;
+}
+
+.expanded-sidebar {
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  background-color: rgb(39, 34, 53);
+  transition: width 0.3s ease;
+}
+
+/* Responsive override for collapsed sidebar on mobile */
+@media (max-width: 490px) {
+  .collapsed-sidebar {
+    width: 76px !important;
+  }
+}
+
+
+

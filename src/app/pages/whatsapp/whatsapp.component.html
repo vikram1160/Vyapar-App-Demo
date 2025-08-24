@@ -1,205 +1,499 @@
-<div class="row">
-  <p-tabView>
-    <p-tabPanel header="All ">
-      <div class="container mt-4">
-        <div class="row">
-          <div class="col-md-4 mb-4" *ngFor="let card of cards">
-            <div class="card h-100 shadow-sm">
-              <img [src]="card.image" class="card-img-top" alt="News Image" *ngIf="card.image" (click)="selectImage(card)">
-              <div class="card-body">
+<div class="card">
+  <!-- ✅ Mobile: Accordion -->
+  <div *ngIf="isMobile; else desktopTabs">
+    <p-accordion>
+      <p-accordionpanel>
+        <p-accordionheader>All</p-accordionheader>
+        <p-accordioncontent>
+          <div class="container mt-4">
+            <div class="row">
+              <div class="col-md-4 mb-4" *ngFor="let card of cards">
+                <div class="card h-100 shadow-sm">
+                  <img [src]="card.image" class="card-img-top" alt="News Image" *ngIf="card.image"
+                    (click)="selectImage(card)">
+                  <div class="card-body">
 
-              </div>
-              <div class="card-footer text-end">
-                <button class="btn btn-outline-primary btn-sm" (click)="showDialog(card)">Read More →</button>
-                <p-dialog header="Share & Download Template" [(visible)]="display" [style]="{width: '780px'}"
-                  [modal]="true">
-                  <div class="p-fluid p-formgrid p-grid">
-                    <div class="p-field p-col-12">
-                      <label>Business Name</label>
-                      <input pInputText [(ngModel)]="businessName" />
-                    </div>
-
-                    <div class="p-field p-col-12">
-                      <label>Contact Person</label>
-                      <input pInputText [(ngModel)]="contactPerson" />
-                    </div>
-
-                    <div class="p-field p-col-12">
-                      <label>Contact Number</label>
-                      <input pInputText [(ngModel)]="contactNumber" />
-                    </div>
-
-                    <div class="p-field p-col-12">
-                      <label>Additional Text</label>
-                      <input pInputText [(ngModel)]="additionalText" />
-                    </div>
                   </div>
+                  <div class="card-footer text-end">
+                    <button class="btn btn-outline-primary btn-sm" (click)="showDialog(card)">Read More →</button>
+                    <p-dialog header="Share & Download Template" [(visible)]="display" [style]="{width: '780px'}"
+                      [modal]="true">
+                      <div class="p-fluid p-formgrid p-grid">
+                        <div class="p-field p-col-12">
+                          <label>Business Name</label>
+                          <input pInputText [(ngModel)]="businessName" />
+                        </div>
 
-                  <div #preview class="template-preview">
-                    <div class="template-header">
-                      {{ businessName || 'My Company' }}
-                    </div>
-                    <img [src]="selectedCard?.image" class="preview-image" *ngIf="selectedCard" style="width: 50%; margin-top: -34%; margin-right: 50%;"/>
+                        <div class="p-field p-col-12">
+                          <label>Contact Person</label>
+                          <input pInputText [(ngModel)]="contactPerson" />
+                        </div>
 
-                    <!-- <img [src]="selectedCard.image" class="preview-image" *ngIf="selectedCard" 
+                        <div class="p-field p-col-12">
+                          <label>Contact Number</label>
+                          <input pInputText [(ngModel)]="contactNumber" />
+                        </div>
+
+                        <div class="p-field p-col-12">
+                          <label>Additional Text</label>
+                          <input pInputText [(ngModel)]="additionalText" />
+                        </div>
+                      </div>
+
+                      <div #preview class="template-preview">
+                        <div class="template-header">
+                          {{ businessName || 'My Company' }}
+                        </div>
+                        <img [src]="selectedCard?.image" class="preview-image" *ngIf="selectedCard"
+                          style="width: 50%; margin-top: -34%; margin-right: 50%;" />
+
+                        <!-- <img [src]="selectedCard.image" class="preview-image" *ngIf="selectedCard" 
                       style="width: 50%; margin-top: -34%; margin-right: 50%;" /> -->
-                    <div class="template-quote">
+                        <div class="template-quote">
 
-                    </div>
-                    <div class="template-footer">
-                      <span>{{ additionalText }}</span>
-                      <span>{{ contactNumber }}</span>
-                    </div>
-                  </div>
-                  <div class="p-d-flex p-jc-between m-4">
-                    <button pButton label="Download Image" (click)="downloadImage()"></button>
-                    <button pButton label="Share on WhatsApp" class="p-button-success power " (click)=" shareOnWhatsApp() "></button>
-                  </div>
-                </p-dialog>
+                        </div>
+                        <div class="template-footer">
+                          <span>{{ additionalText }}</span>
+                          <span>{{ contactNumber }}</span>
+                        </div>
+                      </div>
+                      <div class="p-d-flex p-jc-between m-4">
+                        <button pButton label="Download Image" (click)="downloadImage()"></button>
+                        <button pButton label="Share on WhatsApp" class="p-button-success power "
+                          (click)=" shareOnWhatsApp() "></button>
+                      </div>
+                    </p-dialog>
 
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </p-tabPanel>
+          <div class="container mt-4">
+            <div class="row">
+              <div class="col-md-4 mb-4" *ngFor="let card of cards">
+                <div class="card h-100 shadow-sm">
+                  <img [src]="card.image" class="card-img-top" alt="News Image" *ngIf="card.image"
+                    (click)="selectImage(card)">
+                  <div class="card-body">
 
-
-
-
-    <p-tabPanel header="Lasest Update">
-      <div class="container py-4">
-        <div class="row g-3">
-          <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let card of newsCards">
-            <div class="card h-100 shadow-sm border-0">
-              <img [src]="card.image" class="card-img-top" alt="News image" style="height: 150px; object-fit: cover" />
-              <div class="card-body">
-                <h6 class="card-title fw-bold" [innerHTML]="card.title"></h6>
-                <p class="card-text" *ngIf="card.subtitle">{{ card.subtitle }}</p>
-              </div>
-              <div class="card-footer text-end bg-white border-0">
-               <button class="btn btn-outline-primary btn-sm" (click)="showDialog(card)">Read More →</button>
-                <!-- <p-button label="Open Template Dialog" (onClick)="display = true"></p-button> -->
-
-                <p-dialog header="Share & Download Template" [(visible)]="display" [style]="{width: '780px'}"
-                  [modal]="true">
-                  <div class="p-fluid p-formgrid p-grid">
-                    <div class="p-field p-col-12">
-                      <label>Business Name</label>
-                      <input pInputText [(ngModel)]="businessName" />
-                    </div>
-
-                    <div class="p-field p-col-12">
-                      <label>Contact Person</label>
-                      <input pInputText [(ngModel)]="contactPerson" />
-                    </div>
-
-                    <div class="p-field p-col-12">
-                      <label>Contact Number</label>
-                      <input pInputText [(ngModel)]="contactNumber" />
-                    </div>
-
-                    <div class="p-field p-col-12">
-                      <label>Additional Text</label>
-                      <input pInputText [(ngModel)]="additionalText" />
-                    </div>
                   </div>
+                  <div class="card-footer text-end">
+                    <button class="btn btn-outline-primary btn-sm" (click)="showDialog(card)">Read More →</button>
+                    <p-dialog header="Share & Download Template" [(visible)]="display" [style]="{width: '780px'}"
+                      [modal]="true">
+                      <div class="p-fluid p-formgrid p-grid">
+                        <div class="p-field p-col-12">
+                          <label>Business Name</label>
+                          <input pInputText [(ngModel)]="businessName" />
+                        </div>
 
-                  <div #preview class="template-preview">
-                    <div class="template-header">
-                      {{ businessName || 'My Company' }}
-                    </div>
-                    <img [src]="selectedCard?.image" class="preview-image" *ngIf="selectedCard" style="width: 50%; margin-top: -34%; margin-right: 50%;"/>
+                        <div class="p-field p-col-12">
+                          <label>Contact Person</label>
+                          <input pInputText [(ngModel)]="contactPerson" />
+                        </div>
 
-                    <!-- <img [src]="selectedCard.image" class="preview-image" *ngIf="selectedCard" 
+                        <div class="p-field p-col-12">
+                          <label>Contact Number</label>
+                          <input pInputText [(ngModel)]="contactNumber" />
+                        </div>
+
+                        <div class="p-field p-col-12">
+                          <label>Additional Text</label>
+                          <input pInputText [(ngModel)]="additionalText" />
+                        </div>
+                      </div>
+
+                      <div #preview class="template-preview">
+                        <div class="template-header">
+                          {{ businessName || 'My Company' }}
+                        </div>
+                        <img [src]="selectedCard?.image" class="preview-image" *ngIf="selectedCard"
+                          style="width: 50%; margin-top: -34%; margin-right: 50%;" />
+
+                        <!-- <img [src]="selectedCard.image" class="preview-image" *ngIf="selectedCard" 
                       style="width: 50%; margin-top: -34%; margin-right: 50%;" /> -->
-                    <div class="template-quote">
+                        <div class="template-quote">
 
-                    </div>
-                    <div class="template-footer">
-                      <!-- <span>{{ additionalText }}</span> -->
-                      <!-- <span>{{ contactNumber }}</span> -->
-                    </div>
+                        </div>
+                        <div class="template-footer">
+                          <span>{{ additionalText }}</span>
+                          <span>{{ contactNumber }}</span>
+                        </div>
+                      </div>
+                      <div class="p-d-flex p-jc-between m-4">
+                        <button pButton label="Download Image" (click)="downloadImage()"></button>
+                        <button pButton label="Share on WhatsApp" class="p-button-success power "
+                          (click)=" shareOnWhatsApp() "></button>
+                      </div>
+                    </p-dialog>
+
                   </div>
-
-                  <div class="p-d-flex p-jc-between p-mt-6 m-4">
-                    <button pButton label="Download Image" (click)="downloadImage()"></button>
-                    <button pButton label="Share on WhatsApp" class="p-button-success power" (click)=" shareOnWhatsApp() "></button>
-                  </div>
-                </p-dialog>
-
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </p-tabPanel>
+        </p-accordioncontent>
+      </p-accordionpanel>
 
-    <p-tabPanel header=" Good Morning">
-      <div class="container py-4">
-        <div class="row">
-          <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-4" *ngFor="let card of quotes">
-            <div class="card h-100 shadow-sm border-0">
-              <img [src]="card.image" class="card-img-top" alt="Good Morning" (click)="selectImage(card)" />
-              <div class="card-body d-flex flex-column justify-content-end text-white p-3"
-                style="background: linear-gradient(to top, rgba(0,0,0,0.6), transparent)">
-                <h5 class="card-title">{{ card.title }}</h5>
-                <!-- <p class="card-text">{{ card.text }}</p> -->
-                 <button class="btn btn-outline-primary btn-sm" (click)="showDialog(card)">Read More →</button>
-
-                 <p-dialog header="Share & Download Template" [(visible)]="display" [style]="{width: '780px'}"
-                  [modal]="true">
-                  <div class="p-fluid p-formgrid p-grid">
-                    <div class="p-field p-col-12">
-                      <label>Business Name</label>
-                      <input pInputText [(ngModel)]="businessName" />
-                    </div>
-
-                    <div class="p-field p-col-12">
-                      <label>Contact Person</label>
-                      <input pInputText [(ngModel)]="contactPerson" />
-                    </div>
-
-                    <div class="p-field p-col-12">
-                      <label>Contact Number</label>
-                      <input pInputText [(ngModel)]="contactNumber" />
-                    </div>
-
-                    <div class="p-field p-col-12">
-                      <label>Additional Text</label>
-                      <input pInputText [(ngModel)]="additionalText" />
-                    </div>
+      <p-accordionpanel>
+        <p-accordionheader>Lasest Update</p-accordionheader>
+        <p-accordioncontent>
+          <div class="container py-4">
+            <div class="row g-3">
+              <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let card of newsCards">
+                <div class="card h-100 shadow-sm border-0">
+                  <img [src]="card.image" class="card-img-top" alt="News image"
+                    style="height: 150px; object-fit: cover" />
+                  <div class="card-body">
+                    <h6 class="card-title fw-bold" [innerHTML]="card.title"></h6>
+                    <p class="card-text" *ngIf="card.subtitle">{{ card.subtitle }}</p>
                   </div>
+                  <div class="card-footer text-end bg-white border-0">
+                    <button class="btn btn-outline-primary btn-sm" (click)="showDialog(card)">Read More →</button>
+                    <!-- <p-button label="Open Template Dialog" (onClick)="display = true"></p-button> -->
 
-                  <div #preview class="template-preview">
-                    <div class="template-header">
-                      {{ businessName || 'My Company' }}
-                    </div>
-                    <img [src]="selectedCard?.image" class="preview-image" *ngIf="selectedCard" style="width: 50%; margin-top: -34%; margin-right: 50%;"/>
+                    <p-dialog header="Share & Download Template" [(visible)]="display" [style]="{width: '780px'}"
+                      [modal]="true">
+                      <div class="p-fluid p-formgrid p-grid">
+                        <div class="p-field p-col-12">
+                          <label>Business Name</label>
+                          <input pInputText [(ngModel)]="businessName" />
+                        </div>
 
-                    <!-- <img [src]="selectedCard.image" class="preview-image" *ngIf="selectedCard" 
+                        <div class="p-field p-col-12">
+                          <label>Contact Person</label>
+                          <input pInputText [(ngModel)]="contactPerson" />
+                        </div>
+
+                        <div class="p-field p-col-12">
+                          <label>Contact Number</label>
+                          <input pInputText [(ngModel)]="contactNumber" />
+                        </div>
+
+                        <div class="p-field p-col-12">
+                          <label>Additional Text</label>
+                          <input pInputText [(ngModel)]="additionalText" />
+                        </div>
+                      </div>
+
+                      <div #preview class="template-preview">
+                        <div class="template-header">
+                          {{ businessName || 'My Company' }}
+                        </div>
+                        <img [src]="selectedCard?.image" class="preview-image" *ngIf="selectedCard"
+                          style="width: 50%; margin-top: -34%; margin-right: 50%;" />
+
+                        <!-- <img [src]="selectedCard.image" class="preview-image" *ngIf="selectedCard" 
                       style="width: 50%; margin-top: -34%; margin-right: 50%;" /> -->
-                    <div class="template-quote">
+                        <div class="template-quote">
 
-                    </div>
-                    <div class="template-footer">
-                      <!-- <span>{{ additionalText }}</span> -->
-                      <!-- <span>{{ contactNumber }}</span> -->
-                    </div>
-                  </div>
+                        </div>
+                        <div class="template-footer">
+                          <!-- <span>{{ additionalText }}</span> -->
+                          <!-- <span>{{ contactNumber }}</span> -->
+                        </div>
+                      </div>
 
-                  <div class="p-d-flex p-jc-between p-mt-3">
-                    <button pButton label="Download Image" (click)="downloadImage()"></button>
-                    <button pButton label="Share on WhatsApp" class="p-button-success power" (click)=" shareOnWhatsApp() " ></button>
+                      <div class="p-d-flex p-jc-between p-mt-6 m-4">
+                        <button pButton label="Download Image" (click)="downloadImage()"></button>
+                        <button pButton label="Share on WhatsApp" class="p-button-success power"
+                          (click)=" shareOnWhatsApp() "></button>
+                      </div>
+                    </p-dialog>
+
                   </div>
-                </p-dialog>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </p-accordioncontent>
+      </p-accordionpanel>
 
+      <p-accordionpanel>
+        <p-accordionheader>Good Morning</p-accordionheader>
+        <p-accordioncontent>
+          <div class="container py-4">
+            <div class="row">
+              <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-4" *ngFor="let card of quotes">
+                <div class="card h-100 shadow-sm border-0">
+                  <img [src]="card.image" class="card-img-top" alt="Good Morning" (click)="selectImage(card)" />
+                  <div class="card-body d-flex flex-column justify-content-end text-white p-3"
+                    style="background: linear-gradient(to top, rgba(0,0,0,0.6), transparent)">
+                    <h5 class="card-title">{{ card.title }}</h5>
+                    <!-- <p class="card-text">{{ card.text }}</p> -->
+                    <button class="btn btn-outline-primary btn-sm" (click)="showDialog(card)">Read More →</button>
 
-    </p-tabPanel>
-  </p-tabView>
+                    <p-dialog header="Share & Download Template" [(visible)]="display" [style]="{width: '780px'}"
+                      [modal]="true">
+                      <div class="p-fluid p-formgrid p-grid">
+                        <div class="p-field p-col-12">
+                          <label>Business Name</label>
+                          <input pInputText [(ngModel)]="businessName" />
+                        </div>
+
+                        <div class="p-field p-col-12">
+                          <label>Contact Person</label>
+                          <input pInputText [(ngModel)]="contactPerson" />
+                        </div>
+
+                        <div class="p-field p-col-12">
+                          <label>Contact Number</label>
+                          <input pInputText [(ngModel)]="contactNumber" />
+                        </div>
+
+                        <div class="p-field p-col-12">
+                          <label>Additional Text</label>
+                          <input pInputText [(ngModel)]="additionalText" />
+                        </div>
+                      </div>
+
+                      <div #preview class="template-preview">
+                        <div class="template-header">
+                          {{ businessName || 'My Company' }}
+                        </div>
+                        <img [src]="selectedCard?.image" class="preview-image" *ngIf="selectedCard"
+                          style="width: 50%; margin-top: -34%; margin-right: 50%;" />
+
+                        <!-- <img [src]="selectedCard.image" class="preview-image" *ngIf="selectedCard" 
+                      style="width: 50%; margin-top: -34%; margin-right: 50%;" /> -->
+                        <div class="template-quote">
+
+                        </div>
+                        <div class="template-footer">
+                          <!-- <span>{{ additionalText }}</span> -->
+                          <!-- <span>{{ contactNumber }}</span> -->
+                        </div>
+                      </div>
+
+                      <div class="p-d-flex p-jc-between p-mt-3">
+                        <button pButton label="Download Image" (click)="downloadImage()"></button>
+                        <button pButton label="Share on WhatsApp" class="p-button-success power"
+                          (click)=" shareOnWhatsApp() "></button>
+                      </div>
+                    </p-dialog>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </p-accordioncontent>
+      </p-accordionpanel>
+    </p-accordion>
+  </div>
+
+  <!-- ✅ Laptop/Desktop: Tabs -->
+  <ng-template #desktopTabs>
+    <p-tabs value="0">
+      <p-tablist>
+        <p-tab value="0">All</p-tab>
+        <p-tab value="1">Latest Update</p-tab>
+        <p-tab value="2">Good Morning</p-tab>
+      </p-tablist>
+      <p-tabpanels>
+        <p-tabpanel value="0">
+          <div class="container mt-4">
+            <div class="row">
+              <div class="col-md-4 mb-4" *ngFor="let card of cards">
+                <div class="card h-100 shadow-sm">
+                  <img [src]="card.image" class="card-img-top" alt="News Image" *ngIf="card.image"
+                    (click)="selectImage(card)">
+                  <div class="card-body">
+
+                  </div>
+                  <div class="card-footer text-end">
+                    <button class="btn btn-outline-primary btn-sm" (click)="showDialog(card)">Read More →</button>
+                    <p-dialog header="Share & Download Template" [(visible)]="display" [style]="{width: '780px'}"
+                      [modal]="true">
+                      <div class="p-fluid p-formgrid p-grid">
+                        <div class="p-field p-col-12">
+                          <label>Business Name</label>
+                          <input pInputText [(ngModel)]="businessName" />
+                        </div>
+
+                        <div class="p-field p-col-12">
+                          <label>Contact Person</label>
+                          <input pInputText [(ngModel)]="contactPerson" />
+                        </div>
+
+                        <div class="p-field p-col-12">
+                          <label>Contact Number</label>
+                          <input pInputText [(ngModel)]="contactNumber" />
+                        </div>
+
+                        <div class="p-field p-col-12">
+                          <label>Additional Text</label>
+                          <input pInputText [(ngModel)]="additionalText" />
+                        </div>
+                      </div>
+
+                      <div #preview class="template-preview">
+                        <div class="template-header">
+                          {{ businessName || 'My Company' }}
+                        </div>
+                        <img [src]="selectedCard?.image" class="preview-image" *ngIf="selectedCard"
+                          style="width: 50%; margin-top: -34%; margin-right: 50%;" />
+
+                        <!-- <img [src]="selectedCard.image" class="preview-image" *ngIf="selectedCard" 
+                      style="width: 50%; margin-top: -34%; margin-right: 50%;" /> -->
+                        <div class="template-quote">
+
+                        </div>
+                        <div class="template-footer">
+                          <span>{{ additionalText }}</span>
+                          <span>{{ contactNumber }}</span>
+                        </div>
+                      </div>
+                      <div class="p-d-flex p-jc-between m-4">
+                        <button pButton label="Download Image" (click)="downloadImage()"></button>
+                        <button pButton label="Share on WhatsApp" class="p-button-success power "
+                          (click)=" shareOnWhatsApp() "></button>
+                      </div>
+                    </p-dialog>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </p-tabpanel>
+        <p-tabpanel value="1">
+           <div class="container py-4">
+            <div class="row g-3">
+              <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let card of newsCards">
+                <div class="card h-100 shadow-sm border-0">
+                  <img [src]="card.image" class="card-img-top" alt="News image"
+                    style="height: 150px; object-fit: cover" />
+                  <div class="card-body">
+                    <h6 class="card-title fw-bold" [innerHTML]="card.title"></h6>
+                    <p class="card-text" *ngIf="card.subtitle">{{ card.subtitle }}</p>
+                  </div>
+                  <div class="card-footer text-end bg-white border-0">
+                    <button class="btn btn-outline-primary btn-sm" (click)="showDialog(card)">Read More →</button>
+                    <!-- <p-button label="Open Template Dialog" (onClick)="display = true"></p-button> -->
+
+                    <p-dialog header="Share & Download Template" [(visible)]="display" [style]="{width: '780px'}"
+                      [modal]="true">
+                      <div class="p-fluid p-formgrid p-grid">
+                        <div class="p-field p-col-12">
+                          <label>Business Name</label>
+                          <input pInputText [(ngModel)]="businessName" />
+                        </div>
+
+                        <div class="p-field p-col-12">
+                          <label>Contact Person</label>
+                          <input pInputText [(ngModel)]="contactPerson" />
+                        </div>
+
+                        <div class="p-field p-col-12">
+                          <label>Contact Number</label>
+                          <input pInputText [(ngModel)]="contactNumber" />
+                        </div>
+
+                        <div class="p-field p-col-12">
+                          <label>Additional Text</label>
+                          <input pInputText [(ngModel)]="additionalText" />
+                        </div>
+                      </div>
+
+                      <div #preview class="template-preview">
+                        <div class="template-header">
+                          {{ businessName || 'My Company' }}
+                        </div>
+                        <img [src]="selectedCard?.image" class="preview-image" *ngIf="selectedCard"
+                          style="width: 50%; margin-top: -34%; margin-right: 50%;" />
+
+                        <!-- <img [src]="selectedCard.image" class="preview-image" *ngIf="selectedCard" 
+                      style="width: 50%; margin-top: -34%; margin-right: 50%;" /> -->
+                        <div class="template-quote">
+
+                        </div>
+                        <div class="template-footer">
+                          <!-- <span>{{ additionalText }}</span> -->
+                          <!-- <span>{{ contactNumber }}</span> -->
+                        </div>
+                      </div>
+
+                      <div class="p-d-flex p-jc-between p-mt-6 m-4">
+                        <button pButton label="Download Image" (click)="downloadImage()"></button>
+                        <button pButton label="Share on WhatsApp" class="p-button-success power"
+                          (click)=" shareOnWhatsApp() "></button>
+                      </div>
+                    </p-dialog>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </p-tabpanel>
+        <p-tabpanel value="2">
+         <div class="container py-4">
+            <div class="row">
+              <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-4" *ngFor="let card of quotes">
+                <div class="card h-100 shadow-sm border-0">
+                  <img [src]="card.image" class="card-img-top" alt="Good Morning" (click)="selectImage(card)" />
+                  <div class="card-body d-flex flex-column justify-content-end text-white p-3"
+                    style="background: linear-gradient(to top, rgba(0,0,0,0.6), transparent)">
+                    <h5 class="card-title">{{ card.title }}</h5>
+                    <!-- <p class="card-text">{{ card.text }}</p> -->
+                    <button class="btn btn-outline-primary btn-sm" (click)="showDialog(card)">Read More →</button>
+
+                    <p-dialog header="Share & Download Template" [(visible)]="display" [style]="{width: '780px'}"
+                      [modal]="true">
+                      <div class="p-fluid p-formgrid p-grid">
+                        <div class="p-field p-col-12">
+                          <label>Business Name</label>
+                          <input pInputText [(ngModel)]="businessName" />
+                        </div>
+
+                        <div class="p-field p-col-12">
+                          <label>Contact Person</label>
+                          <input pInputText [(ngModel)]="contactPerson" />
+                        </div>
+
+                        <div class="p-field p-col-12">
+                          <label>Contact Number</label>
+                          <input pInputText [(ngModel)]="contactNumber" />
+                        </div>
+
+                        <div class="p-field p-col-12">
+                          <label>Additional Text</label>
+                          <input pInputText [(ngModel)]="additionalText" />
+                        </div>
+                      </div>
+
+                      <div #preview class="template-preview">
+                        <div class="template-header">
+                          {{ businessName || 'My Company' }}
+                        </div>
+                        <img [src]="selectedCard?.image" class="preview-image" *ngIf="selectedCard"
+                          style="width: 50%; margin-top: -34%; margin-right: 50%;" />
+
+                        <!-- <img [src]="selectedCard.image" class="preview-image" *ngIf="selectedCard" 
+                      style="width: 50%; margin-top: -34%; margin-right: 50%;" /> -->
+                        <div class="template-quote">
+
+                        </div>
+                        <div class="template-footer">
+                          <!-- <span>{{ additionalText }}</span> -->
+                          <!-- <span>{{ contactNumber }}</span> -->
+                        </div>
+                      </div>
+
+                      <div class="p-d-flex p-jc-between p-mt-3">
+                        <button pButton label="Download Image" (click)="downloadImage()"></button>
+                        <button pButton label="Share on WhatsApp" class="p-button-success power"
+                          (click)=" shareOnWhatsApp() "></button>
+                      </div>
+                    </p-dialog>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </p-tabpanel>
+      </p-tabpanels>
+    </p-tabs>
+  </ng-template>
 </div>

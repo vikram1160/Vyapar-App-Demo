@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { DropdownModule } from 'primeng/dropdown';
-import { CalendarModule } from 'primeng/calendar';
+import { SelectModule } from 'primeng/select';
+import { DatePickerModule } from 'primeng/datepicker';
 import { TableModule } from 'primeng/table';
 
 interface City {
@@ -14,7 +14,7 @@ interface City {
 @Component({
   selector: 'app-purchase',
   standalone: true,
-  imports: [DropdownModule,FormsModule,CalendarModule,TableModule,RouterLink],
+  imports: [SelectModule,FormsModule,DatePickerModule,TableModule,RouterLink],
   templateUrl: './purchase.component.html',
   styleUrl: './purchase.component.css'
 })

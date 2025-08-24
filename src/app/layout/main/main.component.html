@@ -1,6 +1,9 @@
-<!-- <div> -->
-<div style="margin-left: 250px;">
+<div [ngStyle]="{
+    marginLeft: isCollapsed ? '78px' : '250px',
+    width: isCollapsed ? 'calc(100% - 78px)' : 'calc(100% - 250px)',
+    transition: 'margin-left 0.3s ease, width 0.3s ease',
+    padding: '20px'
+  }">
   <app-header></app-header>
   <router-outlet></router-outlet>
 </div>
-<!-- </div> -->

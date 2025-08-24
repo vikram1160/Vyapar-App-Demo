@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, ViewChild } from '@angular/core';
-import { TabViewModule } from 'primeng/tabview';
+import { Component, ElementRef, ViewChild ,HostListener } from '@angular/core';
+import { TabsModule } from 'primeng/tabs';
+import { Accordion, AccordionPanel, AccordionHeader, AccordionContent } from 'primeng/accordion';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
@@ -9,8 +10,8 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-whatsapp-marketing',
   standalone: true,
-  imports: [TabViewModule, CommonModule, DialogModule,
-    InputTextModule,
+  imports: [TabsModule, CommonModule, DialogModule,
+    InputTextModule,Accordion, AccordionPanel, AccordionHeader, AccordionContent,
     ButtonModule,
     FormsModule],
   templateUrl: './whatsapp.component.html',
@@ -20,6 +21,22 @@ export class WhatsappMarketingComponent {
 
   display: boolean = false;
 selectedCard: any = null;
+
+
+  isMobile: boolean = false;
+
+  constructor() {
+    this.checkScreen();
+  }
+
+  @HostListener('window:resize', [])
+  onResize() {
+    this.checkScreen();
+  }
+
+  checkScreen() {
+    this.isMobile = window.innerWidth < 768; // 📱 Mobile breakpoint
+  }
 
 showDialog(card: any) {
   this.selectedCard = card;

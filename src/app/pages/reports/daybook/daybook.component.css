@@ -1,14 +1,16 @@
-/* .container-fluid{
-    margin-left: 152px;
-    width: 854px;
-} */
-input[type="date"] {
-  width: 150px;
-}
+@media (max-width: 576px) {
+  .table {
+    font-size: 13px;
+  }
 
-select.form-select {
-  width: 180px;
-}
-.form-control{
-  width: 150px;
+  .btn {
+    font-size: 14px;
+    padding: 6px 30px;
+    text-align: center;
+  }
+
+  .form-control,
+  .form-select {
+    font-size: 14px;
+  }
 }

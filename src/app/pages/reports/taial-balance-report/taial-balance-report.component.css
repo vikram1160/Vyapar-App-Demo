@@ -1,0 +1,16 @@
+@media (max-width: 576px) {
+	.form-check-label {
+	  font-size: 14px;
+	}
+  
+	.table thead th,
+	.table tbody td {
+	  font-size: 13px;
+	  padding: 0.5rem;
+	}
+  
+	.container h4 {
+	  font-size: 18px;
+	}
+  }
+  

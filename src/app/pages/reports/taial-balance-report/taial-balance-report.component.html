@@ -1,40 +1,46 @@
 <div class="container mt-4">
-  <div class="d-flex justify-content-between align-items-center mb-3">
-    <h4>Trial Balance Report</h4>
-    <div>
-      <button class="btn btn-sm btn-outline-danger me-2 " (click)="downloadPDF()" >Pdf</button>
-      <button class="btn btn-sm btn-outline-success" id="trialBalanceTable" (click)="downloadXLS()">xls</button>
+  <!-- Header -->
+  <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3">
+    <h4 class="mb-2 mb-md-0">Trial Balance Report</h4>
+    <div class="d-flex gap-2">
+      <button class="btn btn-sm btn-outline-danger" (click)="downloadPDF()">PDF</button>
+      <button class="btn btn-sm btn-outline-success" id="trialBalanceTable" (click)="downloadXLS()">XLS</button>
     </div>
   </div>
 
+  <!-- Filters -->
   <div class="card p-3 mb-3">
-    <div class="d-flex flex-wrap gap-3 align-items-center">
-      <div>
-        <label class="form-label me-2 fw-bold">Period:</label>
+    <div class="row gy-3">
+      <!-- Period -->
+      <div class="col-12 col-md-3">
+        <label class="form-label fw-bold">Period:</label>
         <select class="form-select">
           <option>Custom</option>
         </select>
       </div>
-      <div class="d-flex align-items-center gap-2">
+
+      <!-- Date range -->
+      <div class="col-12 col-md-6 d-flex flex-column flex-md-row gap-2 align-items-start align-items-md-center">
         <input type="date" class="form-control" [(ngModel)]="startDate">
-        <span>To</span>
+        <span class="mx-2">To</span>
         <input type="date" class="form-control" [(ngModel)]="endDate">
       </div>
-      <div class="form-check ms-3">
-        <input class="form-check-input" type="checkbox" [(ngModel)]="showWorking" />
-        <label class="form-check-label">Show working trial balance</label>
-      </div>
-      <div class="form-check ms-3">
-        <input class="form-check-input" type="checkbox" [(ngModel)]="showZeroBalances" />
-        <label class="form-check-label">Show 0 balances account</label>
+
+      <!-- Checkboxes -->
+      <div class="col-12 d-flex flex-column flex-md-row gap-3 align-items-start">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" [(ngModel)]="showWorking" />
+          <label class="form-check-label">Show working trial balance</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" [(ngModel)]="showZeroBalances" />
+          <label class="form-check-label">Show 0 balances account</label>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="mb-2">
-    <!-- <a href="#" (click)="expandAll()" class="text-primary">Expand all accounts</a> -->
-  </div>
-
+  <!-- Table -->
   <div class="table-responsive">
     <table class="table table-bordered align-middle text-center">
       <thead class="table-light">
@@ -53,9 +59,9 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="fw-bold">
+        <!-- <tr class="fw-bold">
           <td colspan="5" class="text-start text-dark">Assets</td>
-        </tr>
+        </tr> -->
         <tr>
           <td class="text-start ps-4">Fixed Assets</td>
           <td>0 Dr.</td>
@@ -70,7 +76,7 @@
           <td>0</td>
           <td>0 Dr.</td>
         </tr>
-        <tr class="fw-bold">
+        <tr class="">
           <td class="text-start ps-4">Current Assets</td>
           <td>920194.1 Dr.</td>
           <td>38822</td>

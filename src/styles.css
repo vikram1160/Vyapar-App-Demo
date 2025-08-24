@@ -23,3 +23,23 @@
 .custom-width-button {
   width: 500px !important;
 }
+
+.w-100 {
+  width: 100% !important;
+}
+
+@media (max-width: 500px) {
+  ::ng-deep .p-tablist-content{
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+}
+.element.style {
+  display: block;
+  box-sizing: border-box;
+  height: 300px;
+  width: 894px;
+}
+
+
+

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { DrawerModule } from 'primeng/drawer';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { SettingComponent } from '../../pages/settings/settings.component'
+import { SidebarService } from './sidebar.service';
 
 @Component({
   standalone: true,
@@ -15,14 +16,23 @@ import { SettingComponent } from '../../pages/settings/settings.component'
 export class SidebarComponent {
 
   isSidebarOpen =true;
-  isCollapsed = false;
+  isCollapsed: boolean = false;
 
-  @Output() collapseChanged = new EventEmitter<boolean>();
+  // constructor( , private sidebarService: SidebarService) { }
 
-    sidebarVisible = true;
+    // isCollapsed = false;
 
-  toggleSidebar() {
-    this.sidebarVisible = !this.sidebarVisible;
+  constructor(public sidebarService: SidebarService,private router: Router) {
+    sidebarService.isCollapsed$.subscribe((state) => {
+      this.isCollapsed = state;
+      
+    });
+  }
+
+    // constructor(private sidebarService: SidebarService) {}
+
+   toggleSidebar() {
+    this.sidebarService.toggle();
   }
 
   // toggleSidebar() {
@@ -30,7 +40,9 @@ export class SidebarComponent {
   //   this.collapseChanged.emit(this.isCollapsed);
   // }
 
-  constructor(private router: Router) { }
+  @Output() collapseChanged = new EventEmitter<boolean>();
+
+  
 
   toggleSubmenu(item: any) {
     item.expanded = !item.expanded;
@@ -54,6 +66,10 @@ export class SidebarComponent {
   openDrawer() {
     this.visible = true;
   }
+  
+  // toggleSubmenu(item: any) {
+  //   item.expanded = !item.expanded;
+  // }
 
   menu = [
     { label: 'Home', icon: 'pi pi-home', route: '/' },

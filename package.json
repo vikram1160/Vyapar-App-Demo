@@ -1,7 +1,7 @@
 {
   "name": "vyapar-app",
   "version": "0.0.0",
-   "engines": {
+  "engines": {
     "node": "20.11.1"
   },
   "scripts": {
@@ -32,8 +32,9 @@
     "file-saver": "^2.0.5",
     "jspdf": "^3.0.1",
     "jspdf-autotable": "^5.0.2",
+    "or": "^0.2.0",
     "primeicons": "^7.0.0",
-    "primeng": "^18.0.2",
+    "primeng": "^20.0.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "xlsx": "^0.18.5",

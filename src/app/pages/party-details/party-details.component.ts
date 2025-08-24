@@ -8,7 +8,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputGroupModule, } from 'primeng/inputgroup';
 import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
-import { InputSwitchModule } from 'primeng/inputswitch';
+import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import { ActivatedRoute } from '@angular/router';
 
 
@@ -16,7 +16,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-party-details',
   standalone: true,
-  imports: [RouterLink, TableModule, CommonModule, Tooltip, DialogModule, ButtonModule, InputGroupModule, FormsModule, InputTextModule, CommonModule, InputSwitchModule],
+  imports: [RouterLink, TableModule, CommonModule, Tooltip, DialogModule, ButtonModule, InputGroupModule, FormsModule, InputTextModule, CommonModule, ToggleSwitchModule],
   templateUrl: './party-details.component.html',
   styleUrl: './party-details.component.css'
 })

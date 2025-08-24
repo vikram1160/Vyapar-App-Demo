@@ -1,9 +1,21 @@
-.main-content {
-    /* margin-left: 150px;  */
-    padding: 0px;
+@media (max-width: 576px) {
+  .input-group {
+    flex-direction: column;
   }
-  .card{
-    margin-right: 10%;
-    width: 20%;
-    height: 10% !important;
+
+  bottom{
+        width: 16% !important;
   }
+  .input-group-text {
+    width: 100%;
+    text-align: left;
+  }
+
+  .input-group input {
+    width: 100%;
+  }
+
+  .btn, select, .form-control {
+    width: 100% !important;
+  }
+}

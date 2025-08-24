@@ -1,29 +1,34 @@
 <div class="container-fluid px-3">
-  <div class="filter-bar d-flex flex-wrap align-items-center gap-3 mb-4">
-    <div class="form-group">
-      <!-- <label>All Categories</label> -->
+  <!-- FILTER BAR -->
+  <div class="filter-bar row gx-2 gy-2 align-items-center mb-4">
+    <div class="col-12 col-md-auto">
       <select class="form-control">
         <option>All Categories</option>
-        
       </select>
     </div>
-    <div class="form-group d-flex align-items-center">
+    <div class="col-12 col-md-auto d-flex flex-wrap align-items-center gap-2">
       <input type="checkbox" id="dateFilter">
-      <label for="dateFilter" class="ms-1">Date filter</label>
-      <input type="date" class="form-control ms-2" [(ngModel)]="selectedDate">
+      <label for="dateFilter" class="mb-0">Date filter</label>
+      <input type="date" class="form-control ms-md-2 mt-1 mt-md-0" [(ngModel)]="selectedDate">
     </div>
-    <div class="form-group d-flex align-items-center">
+    <div class="col-12 col-md-auto d-flex align-items-center gap-2">
       <input type="checkbox" id="inStockOnly">
-      <label for="inStockOnly" class="ms-1">Show items in stock</label>
+      <label for="inStockOnly" class="mb-0">Show items in stock</label>
     </div>
-    <div class="ms-auto d-flex gap-2">
-      <button class="btn btn-outline-success"><i class="bi bi-file-earmark-excel"></i></button>
-      <button class="btn btn-outline-secondary"><i class="bi bi-printer"></i></button>
+    <div class="col-12 col-md d-flex justify-content-md-end gap-2">
+      <button class="btn btn-outline-success w-100 w-md-auto">
+        <i class="bi bi-file-earmark-excel"></i>
+      </button>
+      <button class="btn btn-outline-secondary w-100 w-md-auto">
+        <i class="bi bi-printer"></i>
+      </button>
     </div>
   </div>
 
-  <h5 class="fw-bold mb-3">STOCK SUMMARY</h5>
+  <!-- HEADER -->
+  <h5 class="fw-bold mb-3 text-center text-md-start">STOCK SUMMARY</h5>
 
+  <!-- RESPONSIVE TABLE -->
   <div class="table-responsive">
     <table class="table table-bordered table-striped align-middle text-center">
       <thead class="table-light">
@@ -42,7 +47,9 @@
           <td>{{ item.name }}</td>
           <td>{{ item.salePrice | currency:'INR' }}</td>
           <td>{{ item.purchasePrice | currency:'INR' }}</td>
-          <td [ngClass]="{'text-danger': item.stockQty < 0, 'text-success': item.stockQty > 0}">{{ item.stockQty }}</td>
+          <td [ngClass]="{'text-danger': item.stockQty < 0, 'text-success': item.stockQty > 0}">
+            {{ item.stockQty }}
+          </td>
           <td>{{ item.stockValue | currency:'INR' }}</td>
         </tr>
       </tbody>

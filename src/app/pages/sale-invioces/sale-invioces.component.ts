@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { DropdownModule } from 'primeng/dropdown';
-import { CalendarModule } from 'primeng/calendar';
+import { SelectModule } from 'primeng/select';
+import { DatePickerModule } from 'primeng/datepicker';
 import { TableModule } from 'primeng/table';
 import { ActivatedRoute } from '@angular/router';
 import { DatePipe, CommonModule } from '@angular/common';
@@ -14,9 +14,10 @@ interface City {
 @Component({
   selector: 'app-sale-invioces',
   standalone: true,
-  imports: [DropdownModule, FormsModule, CalendarModule, TableModule, DatePipe, CommonModule],
+  imports: [  SelectModule, FormsModule, DatePickerModule, TableModule, CommonModule],
   templateUrl: './sale-invioces.component.html',
   styleUrl: './sale-invioces.component.css'
+  
 })
 export class SaleInviocesComponent implements OnInit {
 

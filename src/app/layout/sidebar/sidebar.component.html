@@ -1,48 +1,71 @@
-<div class="main-content flex-column flex-shrink-0 p-3 text-white"
+<div
+  class="main-content flex-column flex-shrink-0 p-3 text-white"
+  [ngClass]="{ 
+    'collapsed-sidebar': isCollapsed, 
+    'expanded-sidebar': !isCollapsed 
+  }"
   [ngStyle]="{
     width: isCollapsed ? '78px' : '250px',
     height: '100vh',
     position: 'fixed',
-    'background-color': 'rgb(39, 34, 53)'
+    'background-color': 'rgb(39, 34, 53)',
+    transition: 'width 0.3s ease'
   }"
 >
+  <!-- Toggle Button -->
+  <button class="toggle-button mb-3 text-white btn btn-link" (click)="toggleSidebar()">
+   ☰ 
+  </button>
 
-<!-- <button class="toggle-button" (click)="isSidebarOpen = !isSidebarOpen">
-  ☰
-</button> -->
-
- 
+  <!-- Logo or Title -->
   <a href="javascript:void(0)" class="d-flex align-items-center mb-3 text-white text-decoration-none">
-    <span *ngIf="!isCollapsed" class="fs-5 ms-3">Vyapar App</span>
+    <span *ngIf="!isCollapsed" class="fs-4 ms-3 logo">Vyapar App</span>
   </a>
 
   <hr *ngIf="!isCollapsed" />
 
+  <!-- Menu -->
   <ul class="nav nav-pills flex-column mb-auto">
     <li *ngFor="let item of menu" class="nav-item">
 
-      
-      <a *ngIf="!item.children && !item.command" class="nav-link text-white d-flex align-items-center"
-        [routerLink]="item.route">
-        <i class="{{ item.icon }}" style="font-size: 20px;"></i>
-        <span *ngIf="!isCollapsed" class="ms-2">{{ item.label }}</span>
-      </a>
-      <a *ngIf="item.command" class="nav-link text-white d-flex align-items-center"
-        (click)="item.command()">
+      <!-- Normal Link -->
+      <a
+        *ngIf="!item.children && !item.command"
+        class="nav-link text-white d-flex align-items-center"
+        [routerLink]="item.route"
+      >
         <i class="{{ item.icon }}" style="font-size: 20px;"></i>
         <span *ngIf="!isCollapsed" class="ms-2">{{ item.label }}</span>
       </a>
 
- 
+      <!-- Command Link -->
+      <a
+        *ngIf="item.command"
+        class="nav-link text-white d-flex align-items-center"
+        (click)="item.command()"
+      >
+        <i class="{{ item.icon }}" style="font-size: 20px;"></i>
+        <span *ngIf="!isCollapsed" class="ms-2">{{ item.label }}</span>
+      </a>
+
+      <!-- Dropdown -->
       <div *ngIf="item.children">
-        <a href="javascript:void(0)" class="nav-link text-white d-flex align-items-center justify-content-between"
-          (click)="!isCollapsed && toggleSubmenu(item)">
+        <a
+          href="javascript:void(0)"
+          class="nav-link text-white d-flex align-items-center justify-content-between"
+          (click)="!isCollapsed && toggleSubmenu(item)"
+        >
           <span class="d-flex align-items-center">
             <i class="{{ item.icon }}" style="font-size: 20px;"></i>
             <span *ngIf="!isCollapsed" class="ms-2">{{ item.label }}</span>
           </span>
-          <i *ngIf="!isCollapsed" class="bi" [ngClass]="item.expanded ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+          <i
+            *ngIf="!isCollapsed"
+            class="bi"
+            [ngClass]="item.expanded ? 'bi-chevron-up' : 'bi-chevron-down'"
+          ></i>
         </a>
+
         <ul class="nav flex-column ms-3" *ngIf="item.expanded && !isCollapsed">
           <li *ngFor="let child of item.children" class="nav-item">
             <a class="nav-link text-white" [routerLink]="child.route">
@@ -54,6 +77,7 @@
     </li>
   </ul>
 
+  <!-- PrimeNG Drawer -->
   <p-drawer
     header="Settings"
     [(visible)]="visible"
@@ -65,6 +89,3 @@
     <app-setting></app-setting>
   </p-drawer>
 </div>
-
-
-

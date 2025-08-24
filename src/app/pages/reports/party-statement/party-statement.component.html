@@ -1,55 +1,94 @@
+<div class="container-fluid main-div px-3 py-2">
 
-<div class="main-div">
-
-    <div class="filter-section">
-  <div class="date-range">
-    <label>This Month</label>
-    <input type="date" [(ngModel)]="fromDate" />
-    <span>To</span>
-    <input type="date" [(ngModel)]="toDate" />
-  </div>
-
-  <div class="party-select">
-    <input type="text" placeholder="Select Party" />
-  </div>
-
-  <div class="view-options">
-    <label>View:</label>
-    <label><input type="radio" name="view" checked /> Vyapar</label>
-    <label><input type="radio" name="view" /> Accounting</label>
-  </div>
-
-  <div class="actions">
-    <button class="btn btn-outline-secondary">Excel Report</button>
-    <button class="btn btn-outline-secondary">Print</button>
-  </div>
-</div>
-
-<div class="table-section" *ngIf="transactions.length === 0">
-  <p class="no-data">No transactions to show</p>
-</div>
-
-<div class="summary-section">
-  <h4>Party Statement Summary</h4>
-  <div class="summary-grid">
-    <div>
-      <p>Total Sale: ₹ 0.00000</p>
-      <small>(Sale - Sale Return)</small>
+  <!-- Filter Section -->
+  <div class="filter-section row gy-3">
+    
+    <!-- Date Range -->
+    <div class="col-md-4 col-sm-6 d-flex flex-column">
+      <label class="fw-semibold mb-1">This Month</label>
+      <div class="d-flex flex-wrap align-items-center gap-2">
+        <input type="date" class="form-control" [(ngModel)]="fromDate" />
+        <span>To</span>
+        <input type="date" class="form-control" [(ngModel)]="toDate" />
+      </div>
     </div>
-    <div>
-      <p>Total Purchase: ₹ 0.00000</p>
-      <small>(Purchase - Purchase Return)</small>
+
+    <!-- Party Select -->
+    <div class="col-md-4 col-sm-6">
+      <label class="fw-semibold mb-1">Select Party</label>
+      <input type="text" class="form-control" placeholder="Select Party" />
     </div>
-    <div><p>Total Expense: ₹ 0.00000</p></div>
-    <div><p>Total Money-In: ₹ 0.00000</p></div>
-    <div><p>Total Money-out: ₹ 0.00000</p></div>
-    <div class="receivable">
-      <p>Total Receivable</p>
-      <h4>₹ 0.00000</h4>
+
+    <!-- View Options -->
+    <div class="col-md-4 col-sm-12">
+      <label class="fw-semibold mb-1">View:</label>
+      <div class="d-flex flex-wrap gap-3 align-items-center">
+        <label><input type="radio" name="view" checked /> Vyapar</label>
+        <label><input type="radio" name="view" /> Accounting</label>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="col-12 d-flex justify-content-start justify-content-md-end gap-2">
+      <button class="btn btn-outline-secondary">
+        <i class="bi bi-file-earmark-excel"></i> Excel Report
+      </button>
+      <button class="btn btn-outline-secondary">
+        <i class="bi bi-printer"></i> Print
+      </button>
     </div>
   </div>
-</div>
 
+  <!-- No Transaction Message -->
+  <div class="table-section mt-4" *ngIf="transactions.length === 0">
+    <p class="text-center text-muted fs-5">No transactions to show</p>
+  </div>
 
+  <!-- Summary Section -->
+  <div class="summary-section mt-4">
+    <h4 class="fw-bold mb-3">Party Statement Summary</h4>
+    <div class="row g-3 summary-grid">
+
+      <div class="col-md-4 col-sm-6">
+        <div class="p-3 border rounded bg-light">
+          <p class="mb-1">Total Sale: ₹ 0.00000</p>
+          <small>(Sale - Sale Return)</small>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6">
+        <div class="p-3 border rounded bg-light">
+          <p class="mb-1">Total Purchase: ₹ 0.00000</p>
+          <small>(Purchase - Purchase Return)</small>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6">
+        <div class="p-3 border rounded bg-light">
+          <p class="mb-0">Total Expense: ₹ 0.00000</p>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6">
+        <div class="p-3 border rounded bg-light">
+          <p class="mb-0">Total Money-In: ₹ 0.00000</p>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6">
+        <div class="p-3 border rounded bg-light">
+          <p class="mb-0">Total Money-out: ₹ 0.00000</p>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-12">
+        <div class="p-3 border rounded bg-light text-center">
+          <p class="mb-1 fw-semibold">Total Receivable</p>
+          <h4 class="text-success mb-0">₹ 0.00000</h4>
+        </div>
+      </div>
+
+    </div>
+  </div>
 
 </div>

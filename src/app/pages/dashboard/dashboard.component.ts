@@ -2,14 +2,14 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ChartModule } from 'primeng/chart'
-import { DropdownModule } from 'primeng/dropdown';
+import { SelectModule } from 'primeng/select';
 import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [ChartModule,FormsModule, CommonModule,DropdownModule],
+  imports: [ChartModule,FormsModule, CommonModule,SelectModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })

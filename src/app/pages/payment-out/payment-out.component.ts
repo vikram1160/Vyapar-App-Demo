@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { DropdownModule } from 'primeng/dropdown';
-import { CalendarModule } from 'primeng/calendar';
+import { SelectModule } from 'primeng/select';
+import { DatePickerModule } from 'primeng/datepicker';
 import { TableModule } from 'primeng/table';
 
 interface City {
@@ -12,7 +12,7 @@ interface City {
 @Component({
   selector: 'app-payment-out',
   standalone: true,
-  imports: [DropdownModule,FormsModule,CalendarModule,TableModule],
+  imports: [SelectModule,FormsModule,DatePickerModule,TableModule],
   templateUrl: './payment-out.component.html',
   styleUrl: './payment-out.component.css'
 })

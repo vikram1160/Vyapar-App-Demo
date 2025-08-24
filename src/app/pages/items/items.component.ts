@@ -5,15 +5,16 @@ import { InputGroupModule } from 'primeng/inputgroup';
 import { FormsModule } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
-import { TabView, TabViewModule } from 'primeng/tabview';
 import { CommonModule } from '@angular/common';
+import { AccordionModule } from 'primeng/accordion';
+import { TabsModule } from 'primeng/tabs';
 
 
 @Component({
   selector: 'app-iteams',
   standalone: true,
   imports: [RouterLink,TableModule,FormsModule,InputGroupModule,DialogModule,ButtonModule,
-    TabView,TabViewModule,CommonModule],
+    CommonModule,AccordionModule,   TabsModule,],
   templateUrl: './items.component.html',
   styleUrl: './items.component.css'
 })
@@ -27,6 +28,7 @@ export class ItemsComponent {
   ]
   
   visible: boolean = false;
+    isMobile: boolean = false;
 
     showDialog() {
         this.visible = true;

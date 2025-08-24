@@ -1,16 +1,8 @@
-/* .container-fluid{
-    margin-left: 18%;
-    width: 82%;
-} */
-.form-control{
-    width: 30%;
-}
-
-th, td {
-  vertical-align: middle;
-}
-
-.table-responsive {
-  max-height: 70vh;
-  overflow: auto;
+@media (max-width: 576px) {
+  .btn span {
+    display: none !important; /* Hides button text, only icons remain */
+  }
+  select.form-select {
+    width: 100% !important;
+  }
 }

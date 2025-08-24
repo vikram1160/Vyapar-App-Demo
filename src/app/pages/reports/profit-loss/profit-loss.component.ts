@@ -1,14 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CalendarModule } from 'primeng/calendar';
-import { TabViewModule } from 'primeng/tabview';
+import { DatePickerModule } from 'primeng/datepicker';
+import { TabsModule } from 'primeng/tabs';
 import { AccordionModule } from 'primeng/accordion';
 
 @Component({
   selector: 'app-profit-loss',
   standalone: true,
-  imports: [FormsModule, CalendarModule,CommonModule,TabViewModule, AccordionModule],
+  imports: [FormsModule, DatePickerModule,CommonModule,TabsModule, AccordionModule],
   templateUrl: './profit-loss.component.html',
   styleUrl: './profit-loss.component.css'
 })

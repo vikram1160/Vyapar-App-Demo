@@ -4,13 +4,13 @@ import { ButtonModule } from 'primeng/button';
 import { InputGroup, InputGroupModule,  } from 'primeng/inputgroup';
 import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
-import { CalendarModule } from 'primeng/calendar';
+import { DatePickerModule } from 'primeng/datepicker';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-bank-account',
   standalone: true,
-  imports: [DialogModule,ButtonModule,InputGroupModule,FormsModule,InputTextModule,CalendarModule,CommonModule],
+  imports: [DialogModule,ButtonModule,InputGroupModule,FormsModule,InputTextModule,DatePickerModule,CommonModule],
   templateUrl: './bank-ac.component.html',
   styleUrl: './bank-ac.component.css'
 })

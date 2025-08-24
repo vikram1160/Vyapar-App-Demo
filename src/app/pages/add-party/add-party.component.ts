@@ -2,19 +2,19 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule } from '@angular/forms';
 import { TabsModule } from 'primeng/tabs';
 import { CommonModule } from '@angular/common';
-import { TabViewModule } from 'primeng/tabview';
 import { ReactiveFormsModule } from '@angular/forms';
-import { DropdownModule } from 'primeng/dropdown';
+import { SelectModule } from 'primeng/select';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
-import { CalendarModule } from 'primeng/calendar';
+import { DatePickerModule } from 'primeng/datepicker';
 import { Router } from '@angular/router';
-import { RouterLink } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-add-party',
   standalone: true,
-  imports: [TabsModule,CommonModule,TabViewModule,DropdownModule,InputTextModule,ButtonModule,ReactiveFormsModule, FormsModule,CalendarModule,],
+  imports: [TabsModule,CommonModule,TabsModule ,SelectModule,InputTextModule,ButtonModule,ReactiveFormsModule, FormsModule,DatePickerModule],
   templateUrl: './add-party.component.html',
   styleUrl: './add-party.component.css'
 })

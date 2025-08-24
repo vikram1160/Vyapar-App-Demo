@@ -1,90 +1,79 @@
-<div class="row">
-
-  <div class="col-4 md:col-4">
+<!-- Party Basic Info Row -->
+<div class="grid p-fluid">
+  <div class="col-12 md:col-4">
     <label for="partyName">Party Name *</label>
-    <input id="partyName" type="text" [(ngModel)]="partyName" pInputText placeholder="PartyName" />
+    <input id="partyName" type="text" [(ngModel)]="partyName" pInputText placeholder="Party Name" />
   </div>
 
-
-  <div class="col-4 md:col-4">
+  <div class="col-12 md:col-4">
     <label for="gstin">GSTIN</label>
-    <input id="gstin" type="text" pInputText placeholder="gstin" />
+    <input id="gstin" type="text" pInputText placeholder="GSTIN" />
   </div>
 
-
-  <div class="col-4 md:col-4">
+  <div class="col-12 md:col-4">
     <label for="phone">Phone Number</label>
-    <input id="phone" type="text" pInputText placeholder="phone" />
+    <input id="phone" type="text" pInputText placeholder="Phone" />
   </div>
 </div>
 
+<!-- Tab View Section -->
+<p-tab>
+  <!-- GST & Address Tab -->
+  <p-tabpanels header="GST & Address">
+    <form [formGroup]="partyForm" class="grid p-fluid">
+      <div class="col-12 md:col-4">
+        <label for="gstType">GST Type</label>
+        <p-select [options]="gstTypes" formControlName="gstType" optionLabel="label" optionValue="value"
+          placeholder="Select GST Type">
+        </p-select>
+      </div>
 
-<p-tabView>
-  <p-tabPanel header="GST & Address">
-    <form [formGroup]="partyForm" class="grid">
-      <div class="p-fluid flex flex-wrap gap-0 ">
+      <div class="col-12 md:col-4">
+        <label for="state">State</label>
+        <p-select formControlName="state" [options]="states" optionLabel="label" optionValue="value"
+          placeholder="Select State">
+        </p-select>
 
-        <div class="col-12 md:col-4">
-          <label for="gstType">GST Type</label>
-          <p-dropdown [options]="gstTypes" formControlName="gstType" placeholder="Select GST Type"></p-dropdown>
-        </div>
+      </div>
 
+      <div class="col-12 md:col-4">
+        <label for="email">Email ID</label>
+        <input id="email" type="email" pInputText formControlName="email" />
+      </div>
 
-        <div class="col-12 md:col-4">
-          <label for="state">State</label>
-          <p-dropdown [options]="states" formControlName="state" placeholder="Select State"></p-dropdown>
-        </div>
+      <div class="col-12">
+        <label for="billingAddress">Billing Address</label>
+        <textarea id="billingAddress" pInputTextarea formControlName="billingAddress"></textarea>
+      </div>
 
-
-        <div class="col-12 md:col-4">
-          <label for="email">Email ID</label>
-          <input id="email" type="email" pInputText formControlName="email" />
-        </div>
-
-
-        <div class="col-12">
-          <label for="billingAddress">Billing Address</label>
-          <textarea id="billingAddress" pInputTextarea formControlName="billingAddress"></textarea>
-        </div>
-
-        <div class="col-12" *ngIf="showShipping">
-          <label for="shippingAddress">Shipping Address</label>
-          <textarea id="shippingAddress" pInputTextarea formControlName="shippingAddress"></textarea>
-        </div>
+      <div class="col-12" *ngIf="showShipping">
+        <label for="shippingAddress">Shipping Address</label>
+        <textarea id="shippingAddress" pInputTextarea formControlName="shippingAddress"></textarea>
       </div>
     </form>
-  </p-tabPanel>
+    </p-tabpanels>
 
-  <p-tabPanel header="Credit & Balance">
-
-    <div class=" flex flex-wrap gap-0 p-fluid">    
-      <!-- Opening Balance Input -->
-      <div class="p-field p-col-12 p-md-6 small-label"> 
-
-        <span class="p-float-label">
+    <!-- Credit & Balance Tab -->
+    <p-tabpanels header="Credit & Balance">
+      <div class="grid p-fluid">
+        <div class="col-12 md:col-6">
+          <label for="openingBalance">Opening Balance</label>
           <input id="openingBalance" type="text" pInputText [(ngModel)]="openingBalance"
             placeholder="Opening Balance" />
-          <label for="openingBalance">Opening Balance</label>
-        </span>
-      </div>
+        </div>
 
-      <!-- As Of Date Input -->
-      <div class="p-field p-col-12 p-md-6 small-label">
-        <span class="p-float-label">
-          <p-calendar id="asOfDate" [(ngModel)]="asOfDate" dateFormat="dd/mm/yy"></p-calendar>
+        <div class="col-12 md:col-6">
           <label for="asOfDate">As Of Date</label>
-        </span>
+          <p-calendar id="asOfDate" [(ngModel)]="asOfDate" dateFormat="dd/mm/yy"></p-calendar>
+        </div>
       </div>
+    </p-tabpanels>
+    </p-tab>
+
+    <!-- Save Buttons -->
+    <div class="flex justify-content-end mt-4 gap-2">
+      <!-- Optional Save & New -->
+      <!-- <button pButton type="button" label="Save & New" class="p-button-outlined" (click)="save(true)"></button> -->
+
+      <button pButton type="button" label="Save" class="p-button-sm" (click)="navigateWithData()"></button>
     </div>
-
-
-
-  </p-tabPanel>
-
-</p-tabView>
-
-<div class="flex justify-content-end mt-4">
-  <!-- <button pButton type="button" label="Save & New" class="p-button-outlined mr-2 three-tab"
-    (click)="save(true)"></button> -->
-  <button pButton type="button" label="Save" class="three-tab" (click)="navigateWithData()"></button>
-</div>

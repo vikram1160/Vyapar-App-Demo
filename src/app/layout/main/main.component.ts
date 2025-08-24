@@ -2,7 +2,7 @@ import { Component ,EventEmitter ,Output} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
 import { CommonModule } from '@angular/common';
-import { SidebarComponent } from '../sidebar/sidebar.component';
+import { SidebarService } from '../sidebar/sidebar.service';
 
 
 @Component({
@@ -17,6 +17,14 @@ export class MainComponent {
      sidebarCollapsed = false;
 
     isSidebarCollapsed = false;
+  isCollapsed = false;
+
+  constructor(private sidebarService: SidebarService) {
+    sidebarService.isCollapsed$.subscribe((state) => {
+      this.isCollapsed = state;
+      
+    });
+  }
 
   toggleSidebar() {
     this.isSidebarCollapsed = !this.isSidebarCollapsed;

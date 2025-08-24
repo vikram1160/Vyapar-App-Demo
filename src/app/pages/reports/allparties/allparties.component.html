@@ -1,26 +1,37 @@
 <div class="container-fluid p-3">
+  <!-- Filter Section -->
   <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
-    <div class="d-flex align-items-center gap-3 flex-wrap">
-      <label><input type="checkbox" /> Date Filter</label>
-      <select class="form-select" style="width: 200px;">
+    <div class="d-flex align-items-center gap-2 flex-wrap">
+      <label class="form-check-label">
+        <input type="checkbox" class="form-check-input me-1" /> Date Filter
+      </label>
+      <select class="form-select" style="min-width: 160px;">
         <option selected>All parties</option>
       </select>
     </div>
-    <div class="d-flex align-items-center gap-3">
-      <button class="btn btn-outline-secondary"><i class="bi bi-file-earmark-excel"></i> Excel Report</button>
-      <button class="btn btn-outline-secondary"><i class="bi bi-printer"></i> Print</button>
+
+    <!-- Export/Print Buttons -->
+    <div class="d-flex align-items-center gap-2 mt-2 mt-sm-0">
+      <button class="btn btn-outline-secondary btn-sm">
+        <i class="bi bi-file-earmark-excel"></i> <span class="d-none d-sm-inline">Excel Report</span>
+      </button>
+      <button class="btn btn-outline-secondary btn-sm">
+        <i class="bi bi-printer"></i> <span class="d-none d-sm-inline">Print</span>
+      </button>
     </div>
   </div>
 
+  <!-- Search Box -->
   <div class="mb-3">
-    <input class="form-control" type="text" placeholder="Search party name...">
+    <input class="form-control form-control-sm" type="text" placeholder="Search party name..." />
   </div>
 
+  <!-- Table Section -->
   <div class="table-responsive">
     <table class="table table-bordered table-hover align-middle text-center">
       <thead class="table-light">
         <tr>
-          <th><input type="checkbox"  [(ngModel)]="selectAll" (change)="toggleAllSelection()"/></th>
+          <th><input type="checkbox" [(ngModel)]="selectAll" (change)="toggleAllSelection()" /></th>
           <th>#</th>
           <th>Party Name</th>
           <th>Email</th>
@@ -30,7 +41,7 @@
           <th>Credit Limit</th>
         </tr>
       </thead>
-      <tbody class="table">
+      <tbody>
         <tr *ngFor="let party of partyList; let i = index">
           <td><input type="checkbox" /></td>
           <td>{{ i + 1 }}</td>
@@ -38,14 +49,15 @@
           <td>{{ party.email || '---' }}</td>
           <td>{{ party.phone || '---' }}</td>
           <td class="text-success">₹ {{ party.receivable.toFixed(2) }}</td>
-          <td [class.text-danger]="party.payable > 0">₹ {{ party.payable.toFixed(2) || '0.00' }}</td>
+          <td [class.text-danger]="party.payable > 0">₹ {{ party.payable.toFixed(2) }}</td>
           <td>---</td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <div class="d-flex justify-content-between mt-3">
+  <!-- Summary Totals -->
+  <div class="d-flex flex-column flex-sm-row justify-content-between mt-3 gap-2 text-center text-sm-start">
     <div class="fw-bold text-success">Total Receivable: ₹ {{ totalReceivable.toFixed(2) }}</div>
     <div class="fw-bold text-danger">Total Payable: ₹ {{ totalPayable.toFixed(2) }}</div>
   </div>
